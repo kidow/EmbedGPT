@@ -26,8 +26,10 @@ const Modal: FC<Props> = ({
   useEffect(() => {
     if (!isOpen) return
     window.addEventListener('keydown', onEscape)
+    document.body.style.overflow = 'hidden'
     return () => {
       window.removeEventListener('keydown', onEscape)
+      document.body.style.removeProperty('overflow')
     }
   }, [isOpen])
   if (!isOpen) return null

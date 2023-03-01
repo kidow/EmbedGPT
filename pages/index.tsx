@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { Footer, Header } from 'containers'
 import { Card, Collapse, SEO } from 'components'
+import Link from 'next/link'
 
 interface State {}
 
@@ -34,7 +35,9 @@ const HomePage: NextPage = () => {
         </div>
 
         <div className="mx-auto mt-16 max-w-screen-md">
-          <h2 className="mb-4 text-4xl font-bold">FAQs</h2>
+          <h2 id="faqs" className="mb-6 text-4xl font-bold">
+            <Link href="#faqs">FAQs</Link>
+          </h2>
           <div>
             <Collapse
               list={[
