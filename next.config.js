@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ['chat.openai.com', 'i.pravatar.cc']
+    domains: ['lh3.googleusercontent.com']
   }
 }
 
