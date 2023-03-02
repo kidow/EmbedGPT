@@ -13,6 +13,7 @@
     "@supabase/auth-helpers-nextjs": "^0.5.4",
     "@supabase/auth-helpers-react": "^0.3.1",
     "@supabase/supabase-js": "^2.10.0",
+    "@vercel/og": "^0.2.0",
     "cheerio": "^1.0.0-rc.12",
     "classnames": "^2.3.2",
     "next": "13.2.1",

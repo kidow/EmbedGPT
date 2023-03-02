@@ -1,4 +1,4 @@
-import { Icon, SEO } from 'components'
+import { Icon, SEO, Tooltip } from 'components'
 import type {
   GetStaticPaths,
   GetStaticProps,
@@ -8,6 +8,7 @@ import type {
 import { useMemo } from 'react'
 import { supabase } from 'services'
 import styles from 'styles/utils.module.css'
+import * as cheerio from 'cheerio'
 
 interface Props {
   title: string
@@ -23,9 +24,14 @@ const ConversationIdPage: NextPage<
     () => JSON.parse(content),
     [content]
   )
+
+  const description: string = useMemo(
+    () => cheerio.load(items[1].value, null, false).text().substring(0, 120),
+    [items]
+  )
   return (
     <>
-      <SEO title={title.split('\n')[0]} />
+      <SEO title={title.split('\n')[0]} description={description} />
       <div className="flex min-h-screen flex-col items-center bg-primary">
         {items.map((item, key) =>
           item.from === 'human' ? (
@@ -78,7 +84,43 @@ const ConversationIdPage: NextPage<
       </div>
       <div className="flex items-center justify-center bg-primary py-10">
         <div>
-          <div className="flex">Share</div>
+          <div className="flex items-center gap-4">
+            <Tooltip content="Copy URL">
+              <button>
+                <Icon.Link className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="Iframe">
+              <button>
+                <Icon.Embed className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="Twitter">
+              <button>
+                <Icon.Twitter className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="Facebook">
+              <button>
+                <Icon.Facebook className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="Reddit">
+              <button>
+                <Icon.Reddit className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="LinkedIn">
+              <button>
+                <Icon.LinkedIn className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="카카오톡">
+              <button>
+                <Icon.KakaoTalk className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+          </div>
         </div>
       </div>
       <div className="prose prose-invert" />
