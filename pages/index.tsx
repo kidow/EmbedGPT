@@ -1,11 +1,18 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { Footer, Header } from 'containers'
 import { Card, Collapse, SEO } from 'components'
 import Link from 'next/link'
+import { supabase } from 'services'
 
+interface Props {
+  data: Database['public']['Tables']['conversations']['Row'][] | null
+}
 interface State {}
 
-const HomePage: NextPage = () => {
+const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  data
+}) => {
+  console.log('data', data)
   return (
     <>
       <SEO />
@@ -28,8 +35,8 @@ const HomePage: NextPage = () => {
         </div>
         <div className="mx-auto mt-16 max-w-screen-md">
           <ul className="space-y-5">
-            {Array.from({ length: 4 }).map((_, key) => (
-              <Card key={key} />
+            {data.map((item, key) => (
+              <Card key={key} {...item} />
             ))}
           </ul>
         </div>
@@ -53,6 +60,15 @@ const HomePage: NextPage = () => {
       </main>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const { data } = await supabase
+    .from('conversations')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(5)
+  return { props: { data }, revalidate: 60 }
 }
 
 export default HomePage

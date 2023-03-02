@@ -28,3 +28,42 @@ interface ModalProps {
   padding?: boolean
   footer?: ReactNode
 }
+
+interface Database {
+  public: {
+    Tables: {
+      conversations: {
+        Row: {
+          id: string
+          created_at: string
+          avatar_url: string | null
+          title: string
+          content: string
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          avatar_url?: string | null
+          title?: string
+          content?: string
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          avatar_url?: string | null
+          title?: string
+          content?: string
+        }
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+  }
+}

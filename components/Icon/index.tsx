@@ -5,7 +5,7 @@ const ChatGPT = () => (
     viewBox="0 0 41 41"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    stroke-width="1.5"
+    strokeWidth="1.5"
     className="h-6 w-6"
   >
     <path

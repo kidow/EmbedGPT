@@ -13,6 +13,8 @@ let isRequesting = false
     'flex flex-col items-center text-sm dark:bg-gray-800'
   )[0]
 
+  const image = document.querySelectorAll('img')[1]
+  const avatarUrl = new URL(image.src).searchParams.get('url')
   const items = []
 
   for (const node of container.children) {
@@ -25,14 +27,24 @@ let isRequesting = false
         value: warning ? warning.innerText.split('\n')[0] : node.textContent
       })
     } else if (markdown) {
+      markdown.classList.remove('dark:prose-invert')
+      markdown.classList.remove('dark')
+      markdown.classList.add('prose-invert')
       items.push({ from: 'gpt', value: markdown.outerHTML })
     }
   }
+
+  const res = await fetch('http://localhost:3000/api/conversations', {
+    body: JSON.stringify({ avatarUrl, items }),
+    headers: new Headers({ 'Content-Type': 'application/json' }),
+    method: 'POST'
+  }).catch((err) => {
+    alert(`Error saving conversation: ${err.message}`)
+  })
+  const { id, success } = await res.json()
+  if (success) window.open(`http://localhost:3000/c/${id}`, '_blank')
+
+  setTimeout(() => {
+    isRequesting = false
+  }, 1000)
 })()
-
-function getAvatarImage() {
-  const image = document.querySelectorAll('img')[1]
-  const url = new URL(image.src).searchParams.get('url')
-
-  return url || ''
-}

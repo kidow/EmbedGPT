@@ -1,11 +1,11 @@
 {
-  "name": "chrome-extension-boilerplate-react",
-  "version": "5.0.4",
-  "description": "A chrome extension boilerplate built with React 18, Webpack 5, and Webpack Dev Server 4",
+  "name": "embedgpt-extension",
+  "version": "1.0.0",
+  "description": "EmbedGPT lets you embed ChatGPT content on Twitter, Reddit, etc.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lxieyang/chrome-extension-boilerplate-react.git"
+    "url": "https://github.com/kidow/embedgpt.git"
   },
   "scripts": {
     "build": "node utils/build.js",

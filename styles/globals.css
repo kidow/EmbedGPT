@@ -9,6 +9,23 @@
   }
 }
 
+.markdown pre,
+.markdown code {
+  @apply p-0;
+}
+
+.markdown code {
+  @apply !mb-0 text-white;
+}
+
+.markdown pre > div {
+  @apply !mb-0;
+}
+
+.markdown pre > div > div:nth-of-type(1) {
+  @apply bg-primary;
+}
+
 .hljs {
   display: block;
   overflow-x: auto;
@@ -19,66 +36,27 @@
   background: #000;
 }
 
-.hljs-comment,
 .hljs-punctuation {
   color: #768390;
 }
 
-.hljs-attr,
-.hljs-attribute,
-.hljs-meta,
-.hljs-selector-attr,
-.hljs-selector-class,
-.hljs-selector-id {
+.hljs-meta {
   color: #6cb6ff;
-}
-
-.hljs-variable,
-.hljs-literal,
-.hljs-number,
-.hljs-doctag {
-  color: #f69d50;
-}
-
-.hljs-params {
-  color: #cdd9e5;
-}
-
-.hljs-function {
-  color: #dcbdfb;
 }
 
 .hljs-class,
-.hljs-tag,
-.hljs-title,
-.hljs-built_in {
+.hljs-tag {
   color: #8ddb8c;
 }
 
-.hljs-keyword,
-.hljs-type,
 .hljs-builtin-name,
 .hljs-meta-keyword,
-.hljs-template-tag,
-.hljs-template-variable {
-  color: #f47067;
+.hljs-template-tag {
+  color: #2e95d3;
 }
 
-.hljs-string,
 .hljs-undefined {
   color: #96d0ff;
-}
-
-.hljs-regexp {
-  color: #96d0ff;
-}
-
-.hljs-symbol {
-  color: #6cb6ff;
-}
-
-.hljs-bullet {
-  color: #f69d50;
 }
 
 .hljs-section {
@@ -88,8 +66,7 @@
 
 .hljs-quote,
 .hljs-name,
-.hljs-selector-tag,
-.hljs-selector-pseudo {
+.hljs-selector-tag {
   color: #8ddb8c;
 }
 
@@ -109,11 +86,54 @@
 }
 
 .hljs-addition {
-  color: #8ddb8c;
   background-color: #113417;
 }
 
 .hljs-link {
-  color: #96d0ff;
   font-style: underline;
+}
+
+/*  */
+
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword,
+.hljs-literal {
+  color: #2e95d3;
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: #f22c3d;
+}
+
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string,
+.hljs-regexp,
+.hljs-string {
+  color: #00a67d;
+}
+
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: #df3079;
+}
+
+.hljs-comment {
+  color: hsla(0, 0%, 100%, 0.5);
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: #e9950c;
 }

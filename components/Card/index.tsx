@@ -1,16 +1,23 @@
 import { ShareIcon } from '@heroicons/react/20/solid'
 import { Icon } from 'components'
 import { Modal } from 'containers'
+import { useMemo } from 'react'
 import type { FC } from 'react'
 import { useObjectState } from 'services'
 
-export interface Props {}
+type Data = Database['public']['Tables']['conversations']['Row']
+export interface Props extends Data {}
 interface State {
   isOpen: boolean
 }
 
-const Card: FC<Props> = () => {
+const Card: FC<Props> = ({ title, content, avatar_url, id }) => {
   const [{ isOpen }, setState] = useObjectState<State>({ isOpen: false })
+
+  const items: Array<{ from: 'human' | 'gpt'; value: string }> = useMemo(
+    () => JSON.parse(content),
+    [content]
+  )
   return (
     <>
       <li className="group relative divide-y divide-gray-900/50 rounded-md shadow-md">
@@ -21,15 +28,8 @@ const Card: FC<Props> = () => {
           <ShareIcon className="h-5 w-5" />
         </button>
         <div className="flex gap-6 bg-primary p-6">
-          <img
-            src="https://lh3.googleusercontent.com/ogw/AAEL6shqAtfW3mNdIhTv8amgGAca4gYlDGYGyzdVKdaK=s64-c-mo"
-            alt=""
-            className="h-[30px] w-[30px]"
-          />
-          <div className="whitespace-pre-wrap">
-            머신 러닝으로 AI 음악 생성기를 만들려고 해. 파이썬으로 구현하려는데
-            어디서부터 시작하면 돼?
-          </div>
+          <img src={avatar_url || ''} alt="" className="h-[30px] w-[30px]" />
+          <div className="whitespace-pre-wrap">{title}</div>
         </div>
         <div className="flex gap-6 bg-secondary p-6">
           <div className="flex h-[30px] w-[30px] items-center justify-center rounded-sm bg-brand p-1 text-white">
@@ -67,10 +67,10 @@ const Card: FC<Props> = () => {
                   <svg
                     stroke="currentColor"
                     fill="none"
-                    stroke-width="2"
+                    strokeWidth="2"
                     viewBox="0 0 24 24"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="h-4 w-4"
                     height="1em"
                     width="1em"
