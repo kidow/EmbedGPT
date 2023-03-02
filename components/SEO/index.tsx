@@ -14,7 +14,7 @@ interface Props {
 const SEO: FC<Props> = ({
   title,
   description = '클릭 한 번으로 ChatGPT 대화를 공유하세요.',
-  image = 'https://embedgpt.vercel.app/banner.png',
+  image = 'https://raw.githubusercontent.com/kidow/embedgpt/main/public/banner.png',
   ldJson,
   noSEO = false,
   keywords = 'chatgpt, embed'

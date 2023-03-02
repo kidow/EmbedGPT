@@ -1,3 +1,5 @@
+![banner](https://raw.githubusercontent.com/kidow/embedgpt/main/public/banner.png)
+
 # EmbedGPT
 
 ## Introduction
