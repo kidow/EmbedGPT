@@ -11,8 +11,10 @@ interface State {
   isOpen: boolean
 }
 
-const Card: FC<Props> = ({ title, content, avatar_url, id }) => {
+const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
   const [{ isOpen }, setState] = useObjectState<State>({ isOpen: false })
+
+  const title: string = useMemo(() => props.title.split('\n')[0], [props.title])
 
   const items: Array<{ from: 'human' | 'gpt'; value: string }> = useMemo(
     () => JSON.parse(content),
@@ -29,7 +31,7 @@ const Card: FC<Props> = ({ title, content, avatar_url, id }) => {
         </button>
         <div className="flex gap-6 bg-primary p-6">
           <img src={avatar_url || ''} alt="" className="h-[30px] w-[30px]" />
-          <div className="whitespace-pre-wrap">{title}</div>
+          <div className="whitespace-pre-wrap">{props.title}</div>
         </div>
         <div className="flex gap-6 bg-secondary p-6">
           <div className="flex h-[30px] w-[30px] items-center justify-center rounded-sm bg-brand p-1 text-white">
@@ -49,10 +51,7 @@ const Card: FC<Props> = ({ title, content, avatar_url, id }) => {
           title="공유"
         >
           <div className="space-y-6">
-            <div className="truncate text-xl font-semibold">
-              머신 러닝으로 AI 음악 생성기를 만들려고 해. 파이썬으로
-              구현하려는데 어디서부터 시작하면 돼?
-            </div>
+            <div className="truncate text-xl font-semibold">{title}</div>
             <div className="flex gap-2">asd</div>
             <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
               <span className="p-2">https://url</span>
@@ -81,23 +80,6 @@ const Card: FC<Props> = ({ title, content, avatar_url, id }) => {
                   </svg>
                   Copy code
                 </button>
-              </div>
-              <div className="overflow-y-auto">
-                <code className="hljs language-javascript !whitespace-pre">
-                  <span className="hljs-keyword">const</span>
-                  object =<span className="hljs-attr">children</span>: [ ...(
-                  <span className="hljs-title class_">Math</span>.
-                  <span className="hljs-title function_">random</span>() &gt;{' '}
-                  <span className="hljs-number">0.5</span> ? [{' '}
-                  <span className="hljs-attr">name</span>:{' '}
-                  <span className="hljs-string">'Charles'</span> ] : []),
-                  <span className="hljs-attr">name</span>:{' '}
-                  <span className="hljs-string">'Anna'</span>
-                  <span className="hljs-attr">name</span>:{' '}
-                  <span className="hljs-string">'Jane'</span>
-                  <span className="hljs-variable language_">console</span>.
-                  <span className="hljs-title function_">log</span>(object);
-                </code>
               </div>
             </div>
           </div>

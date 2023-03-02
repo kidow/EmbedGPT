@@ -7,8 +7,14 @@ export default function Document() {
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#10a37f" />
         <meta name="robots" content="index, follow" />
-        <meta name="google-site-verification" content="" />
-        <meta name="naver-site-verification" content="" />
+        <meta
+          name="google-site-verification"
+          content="6fUNDBpgXlqEpQW5ffFHpzqsiQefGySn2i0AJ6UMliw"
+        />
+        <meta
+          name="naver-site-verification"
+          content="70d49ffb3dc232a681418ea72bb5fd8c9f0751a8"
+        />
         <link
           rel="icon"
           type="image/png"

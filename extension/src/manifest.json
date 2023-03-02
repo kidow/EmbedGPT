@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "EmbedGPT - Embed your ChatGPT content to community",
+  "name": "EmbedGPT - ChatGPT 내용을 공유하고 붙여넣기",
   "version": "1.0.0",
-  "description": "EmbedGPT lets you embed ChatGPT content on Twitter, Reddit, etc.",
+  "description": "클릭 한 번으로 공유하고 커뮤니티에 손쉽게 붙여넣기하세요.",
   "background": {
     "service_worker": "background.bundle.js"
   },
@@ -24,6 +24,5 @@
       "js": ["contentScript.bundle.js"],
       "run_at": "document_end"
     }
-  ],
-  "host_permissions": ["https://embedgpt.vercel.app/*"]
+  ]
 }
