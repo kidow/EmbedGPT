@@ -1,18 +1,54 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
+import type { NextPage } from 'next'
 import { Footer, Header } from 'containers'
-import { Card, Collapse, SEO } from 'components'
+import { Card, Collapse, SEO, Spinner } from 'components'
 import Link from 'next/link'
-import { supabase } from 'services'
+import { captureException, useObjectState } from 'services'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useEffect } from 'react'
 
 interface Props {
   data: Database['public']['Tables']['conversations']['Row'][] | null
+  count: number | null
 }
-interface State {}
+interface State {
+  total: number
+  page: number
+  list: Database['public']['Tables']['conversations']['Row'][]
+  isLoading: boolean
+}
 
-const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  data
-}) => {
-  console.log('data', data)
+const HomePage: NextPage = () => {
+  const [{ page, total, list, isLoading }, setState] = useObjectState<State>({
+    page: 1,
+    total: 0,
+    list: [],
+    isLoading: false
+  })
+  const supabase = useSupabaseClient<Database>()
+
+  const get = async (page: number = 1) => {
+    if (isLoading) return
+    setState({ isLoading: true })
+    const { data, error, count } = await supabase
+      .from('conversations')
+      .select('*', { count: 'exact' })
+      .order('created_at', { ascending: false })
+      .range((page - 1) * 5, page * 5 - 1)
+    if (error) {
+      captureException(error)
+      return
+    }
+    setState({
+      page,
+      list: page === 1 ? data : [...list, ...data],
+      total: count || 0,
+      isLoading: false
+    })
+  }
+
+  useEffect(() => {
+    get()
+  }, [])
   return (
     <>
       <SEO />
@@ -35,10 +71,15 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         </div>
         <div className="mx-auto mt-16 max-w-screen-md">
           <ul className="space-y-5">
-            {data.map((item, key) => (
+            {list.map((item, key) => (
               <Card key={key} {...item} />
             ))}
           </ul>
+          {isLoading && (
+            <div className="flex justify-center py-10">
+              <Spinner className="h-5 w-5" />
+            </div>
+          )}
         </div>
 
         <div className="mx-auto mt-16 max-w-screen-md">
@@ -48,9 +89,17 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           <div>
             <Collapse
               list={[
-                { title: 'Title 1', content: 'Content 1' },
-                { title: 'Title 2', content: 'Content 2' },
-                { title: 'Title 3', content: 'Content 3' }
+                {
+                  title: 'ChatGPT 내용을 어떻게 공유할 수 있나요?',
+                  content:
+                    '홈페이지 상단에 위치한 "Install Extension"을 클릭하여 크롬 확장 프로그램을 설치하 주세요. 이 후 ChatGPT에 들어가서 공유하고 싶은 대화에서 아이콘을 클릭하면 자동으로 EmbedGPT에 공유됩니다.'
+                },
+                {
+                  title: '개인정보를 가져가지는 않나요?',
+                  content:
+                    'EmbedGPT는 가입도 필요 없으며, ChatGPT 내용을 가져오는 과정에서 유저 아바타 URL과 내용말고는 개인정보와 관련된 어떤 정보도 수집하지 않습니다.'
+                },
+                { title: '무료인가요?', content: '모든 기능은 무료입니다!' }
               ]}
             />
           </div>
@@ -60,15 +109,6 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </main>
     </>
   )
-}
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const { data } = await supabase
-    .from('conversations')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(5)
-  return { props: { data }, revalidate: 60 }
 }
 
 export default HomePage
