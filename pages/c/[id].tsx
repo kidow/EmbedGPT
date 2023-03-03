@@ -31,12 +31,19 @@ const ConversationIdPage: NextPage<
   )
 
   const description: string = useMemo(
-    () => cheerio.load(items[1].value, null, false).text().substring(0, 120),
+    () =>
+      cheerio.load(items[1].value, null, false)('*').find('*').first().text(),
     [items]
   )
   return (
     <>
-      <SEO title={title.split('\n')[0]} description={description} />
+      <SEO
+        title={title.split('\n')[0]}
+        description={description}
+        image={`${process.env.NEXT_PUBLIC_BASE_URL}/api/t?t=${
+          title.split('\n')[0]
+        }&d=${description}&a=${avatar_url}`}
+      />
       <div className="flex min-h-screen flex-col items-center bg-primary">
         {items.map((item, key) => (
           <div

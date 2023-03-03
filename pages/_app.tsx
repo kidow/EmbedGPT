@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import type { Session } from '@supabase/auth-helpers-react'
 import 'styles/globals.css'
-import hljs from 'highlight.js'
 
 interface Props {
   initialSession: Session
@@ -18,7 +17,6 @@ export default function App({ Component, pageProps }: AppProps<Props>) {
   )
 
   useEffect(() => {
-    hljs.highlightAll()
     const script = document.createElement('script')
     script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js'
     script.defer = true
