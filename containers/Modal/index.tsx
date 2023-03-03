@@ -61,7 +61,7 @@ const Modal: FC<Props> = ({
           )}
         >
           {!!title && (
-            <header className="border-t-4 border-brand bg-white dark:bg-neutral-800">
+            <header className="border-t-4 border-brand bg-white dark:bg-neutral-900">
               <div className="flex items-center border-b border-neutral-200 py-3 px-4 dark:border-neutral-700">
                 <div className="flex-1">
                   <h1 className="text-xl font-semibold">{title}</h1>
@@ -81,7 +81,7 @@ const Modal: FC<Props> = ({
             </header>
           )}
           <div
-            className={classnames('bg-white dark:bg-neutral-800', {
+            className={classnames('bg-white dark:bg-neutral-900', {
               'py-6 px-7': padding,
               'rounded-b-lg': !footer
             })}

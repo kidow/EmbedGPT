@@ -35,7 +35,11 @@ const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
         </button>
 
         <div className="flex gap-6 bg-primary p-6">
-          <img src={avatar_url || ''} alt="" className="h-[30px] w-[30px]" />
+          <img
+            src={avatar_url || ''}
+            alt="User"
+            className="h-[30px] w-[30px]"
+          />
           <div className="whitespace-pre-wrap text-text">{props.title}</div>
         </div>
         <div className="flex gap-6 bg-secondary p-6">
@@ -51,7 +55,7 @@ const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
         <button
           onClick={() => {
             setState({ isDetailOpen: true })
-            window.history.replaceState(window.history.state, '', `/c/${id}`)
+            window.history.pushState(window.history.state, '', `/c/${id}`)
           }}
           className="absolute left-1/2 bottom-0 h-10 -translate-x-1/2 translate-y-1/2 select-none rounded-md border bg-secondary py-2 px-4 text-sm"
         >
@@ -64,6 +68,7 @@ const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
           onClose={() => setState({ isShareOpen: false })}
           id={id}
           title={title}
+          avatarUrl={avatar_url}
         />
       )}
       {isDetailOpen && (
@@ -71,7 +76,7 @@ const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
           isOpen={isDetailOpen}
           onClose={() => {
             setState({ isDetailOpen: false })
-            window.history.replaceState(window.history.state, '', '/')
+            window.history.pushState(window.history.state, '', '/')
           }}
           id={id}
           content={content}

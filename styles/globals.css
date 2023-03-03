@@ -9,6 +9,30 @@
   }
 }
 
+.share-container {
+  @apply flex gap-3 overflow-x-scroll;
+}
+
+.share-container button {
+  @apply flex h-15 w-15 items-center justify-center rounded-full;
+}
+
+.share-container button svg {
+  @apply h-10 w-10;
+}
+
+.share-floating {
+  @apply flex flex-col gap-3 rounded-full border border-neutral-800/50 bg-secondary p-2;
+}
+
+.share-floating li button {
+  @apply rounded-full border border-neutral-800/50 bg-primary p-2 hover:border-neutral-600;
+}
+
+.share-floating li button svg {
+  @apply h-6 w-6;
+}
+
 .markdown pre,
 .markdown code {
   @apply p-0;

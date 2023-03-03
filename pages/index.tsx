@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { captureException, useObjectState } from 'services'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
 
 interface State {
   total: number
@@ -22,7 +21,6 @@ const HomePage: NextPage = () => {
     isLoading: false
   })
   const supabase = useSupabaseClient<Database>()
-  const { push } = useRouter()
 
   const get = async (page: number = 1) => {
     if (isLoading) return
@@ -31,7 +29,7 @@ const HomePage: NextPage = () => {
       .from('conversations')
       .select('*', { count: 'exact' })
       .order('created_at', { ascending: false })
-      .range((page - 1) * 5, page * 5 - 1)
+      .range((page - 1) * 10, page * 10 - 1)
     if (error) {
       captureException(error)
       return
@@ -77,10 +75,21 @@ const HomePage: NextPage = () => {
               <Card key={key} {...item} />
             ))}
           </ul>
-          {isLoading && (
+          {isLoading ? (
             <div className="flex justify-center py-10">
               <Spinner className="h-5 w-5" />
             </div>
+          ) : (
+            list.length < total && (
+              <div className="flex justify-center pt-20 pb-5">
+                <button
+                  onClick={() => get(page + 1)}
+                  className="rounded-md border border-secondary bg-primary py-2 px-4"
+                >
+                  더 보기
+                </button>
+              </div>
+            )
           )}
         </div>
 
