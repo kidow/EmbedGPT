@@ -63,11 +63,14 @@ const ConversationIdPage: NextPage<
               </div>
               <div className="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
                 <div className="flex flex-grow flex-col gap-3">
-                  <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap text-[#ececf1]">
+                  <div className="flex min-h-[20px] flex-col items-start gap-4 whitespace-pre-wrap break-words text-[#ececf1]">
                     {item.from === 'human' ? (
                       item.value
                     ) : (
-                      <div dangerouslySetInnerHTML={{ __html: item.value }} />
+                      <div
+                        className="w-full"
+                        dangerouslySetInnerHTML={{ __html: item.value }}
+                      />
                     )}
                   </div>
                 </div>
@@ -76,124 +79,126 @@ const ConversationIdPage: NextPage<
             </div>
           </div>
         ))}
-      </div>
-      <div className="flex items-center justify-center bg-primary py-10 lg:hidden">
-        <div>
-          <div className="flex items-center gap-4">
-            <Tooltip content="Copy URL">
-              <CopyToClipboard
-                text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
-                onCopy={() => toast.success('복사되었습니다.')}
-              >
+        <div className="flex items-center justify-center bg-primary py-10 lg:hidden">
+          <div>
+            <div className="flex items-center gap-4">
+              <Tooltip content="Copy URL">
+                <CopyToClipboard
+                  text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
+                  onCopy={() => toast.success('복사되었습니다.')}
+                >
+                  <button>
+                    <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
+                  </button>
+                </CopyToClipboard>
+              </Tooltip>
+              <Tooltip content="퍼가기">
                 <button>
-                  <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
+                  <Icon.Embed className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
-              </CopyToClipboard>
-            </Tooltip>
-            <Tooltip content="퍼가기">
-              <button>
-                <Icon.Embed className="h-6 w-6 fill-[#d1d5db]" />
-              </button>
-            </Tooltip>
-            <Tooltip content="Email">
-              <button>
-                <EnvelopeIcon className="h-6 w-6 text-[#d1d5db]" />
-              </button>
-            </Tooltip>
-            <Tooltip content="Twitter">
-              <button>
-                <Icon.Twitter className="h-6 w-6 fill-[#d1d5db]" />
-              </button>
-            </Tooltip>
-            <Tooltip content="Facebook">
-              <button>
-                <Icon.Facebook className="h-6 w-6 fill-[#d1d5db]" />
-              </button>
-            </Tooltip>
-            <Tooltip content="Reddit">
-              <button>
-                <Icon.Reddit className="h-6 w-6 fill-[#d1d5db]" />
-              </button>
-            </Tooltip>
-            <Tooltip content="LinkedIn">
-              <button>
-                <Icon.LinkedIn className="h-6 w-6 fill-[#d1d5db]" />
-              </button>
-            </Tooltip>
-            <Tooltip content="카카오톡">
-              <button>
-                <Icon.KakaoTalk className="h-6 w-6 fill-[#d1d5db]" />
-              </button>
-            </Tooltip>
+              </Tooltip>
+              <Tooltip content="Email">
+                <button>
+                  <EnvelopeIcon className="h-6 w-6 text-[#d1d5db]" />
+                </button>
+              </Tooltip>
+              <Tooltip content="Twitter">
+                <button>
+                  <Icon.Twitter className="h-6 w-6 fill-[#d1d5db]" />
+                </button>
+              </Tooltip>
+              <Tooltip content="Facebook">
+                <button>
+                  <Icon.Facebook className="h-6 w-6 fill-[#d1d5db]" />
+                </button>
+              </Tooltip>
+              <Tooltip content="Reddit">
+                <button>
+                  <Icon.Reddit className="h-6 w-6 fill-[#d1d5db]" />
+                </button>
+              </Tooltip>
+              <Tooltip content="LinkedIn">
+                <button>
+                  <Icon.LinkedIn className="h-6 w-6 fill-[#d1d5db]" />
+                </button>
+              </Tooltip>
+              <Tooltip content="카카오톡">
+                <button>
+                  <Icon.KakaoTalk className="h-6 w-6 fill-[#d1d5db]" />
+                </button>
+              </Tooltip>
+            </div>
+          </div>
+          <div className="fixed top-16 left-[calc((100vw-768px)/2+768px)] hidden lg:block">
+            <ul className="share-floating">
+              <li>
+                <Tooltip position="left" content="Copy URL">
+                  <CopyToClipboard
+                    text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
+                    onCopy={() => toast.success('복사되었습니다.')}
+                  >
+                    <button>
+                      <LinkIcon className="text-neutral-300" />
+                    </button>
+                  </CopyToClipboard>
+                </Tooltip>
+              </li>
+              <li>
+                <Tooltip position="left" content="퍼가기">
+                  <button>
+                    <Icon.Embed className="fill-neutral-300" />
+                  </button>
+                </Tooltip>
+              </li>
+              <li>
+                <Tooltip position="left" content="이메일">
+                  <button>
+                    <EnvelopeIcon className="fill-neutral-300" />
+                  </button>
+                </Tooltip>
+              </li>
+              <li>
+                <Tooltip position="left" content="Twitter">
+                  <button>
+                    <Icon.Twitter className="fill-neutral-300" />
+                  </button>
+                </Tooltip>
+              </li>
+              <li>
+                <Tooltip position="left" content="Facebook">
+                  <button>
+                    <Icon.Facebook className="fill-neutral-300" />
+                  </button>
+                </Tooltip>
+              </li>
+              <li>
+                <Tooltip position="left" content="카카오톡">
+                  <button>
+                    <Icon.KakaoTalk className="fill-neutral-300" />
+                  </button>
+                </Tooltip>
+              </li>
+              <li>
+                <Tooltip position="left" content="Reddit">
+                  <button>
+                    <Icon.Reddit className="fill-neutral-300" />
+                  </button>
+                </Tooltip>
+              </li>
+              <li>
+                <Tooltip position="left" content="LinkedIn">
+                  <button>
+                    <Icon.LinkedIn className="fill-neutral-300" />
+                  </button>
+                </Tooltip>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div className="fixed top-16 left-[calc((100vw-768px)/2+768px)] hidden lg:block">
-        <ul className="share-floating">
-          <li>
-            <Tooltip position="left" content="Copy URL">
-              <CopyToClipboard
-                text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
-                onCopy={() => toast.success('복사되었습니다.')}
-              >
-                <button>
-                  <LinkIcon className="text-neutral-300" />
-                </button>
-              </CopyToClipboard>
-            </Tooltip>
-          </li>
-          <li>
-            <Tooltip position="left" content="퍼가기">
-              <button>
-                <Icon.Embed className="fill-neutral-300" />
-              </button>
-            </Tooltip>
-          </li>
-          <li>
-            <Tooltip position="left" content="이메일">
-              <button>
-                <EnvelopeIcon className="fill-neutral-300" />
-              </button>
-            </Tooltip>
-          </li>
-          <li>
-            <Tooltip position="left" content="Twitter">
-              <button>
-                <Icon.Twitter className="fill-neutral-300" />
-              </button>
-            </Tooltip>
-          </li>
-          <li>
-            <Tooltip position="left" content="Facebook">
-              <button>
-                <Icon.Facebook className="fill-neutral-300" />
-              </button>
-            </Tooltip>
-          </li>
-          <li>
-            <Tooltip position="left" content="카카오톡">
-              <button>
-                <Icon.KakaoTalk className="fill-neutral-300" />
-              </button>
-            </Tooltip>
-          </li>
-          <li>
-            <Tooltip position="left" content="Reddit">
-              <button>
-                <Icon.Reddit className="fill-neutral-300" />
-              </button>
-            </Tooltip>
-          </li>
-          <li>
-            <Tooltip position="left" content="LinkedIn">
-              <button>
-                <Icon.LinkedIn className="fill-neutral-300" />
-              </button>
-            </Tooltip>
-          </li>
-        </ul>
-      </div>
-      <div className="prose prose-invert font-sans" />
+      <span className="prose prose-invert ml-auto hidden h-4 w-4 overflow-y-auto !whitespace-pre font-sans text-xs">
+        <span className="w-full" />
+      </span>
     </>
   )
 }

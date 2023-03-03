@@ -80,8 +80,7 @@
   color: #6cb6ff;
 }
 
-.hljs-class,
-.hljs-tag {
+.hljs-class {
   color: #8ddb8c;
 }
 
@@ -101,7 +100,6 @@
 }
 
 .hljs-quote,
-.hljs-name,
 .hljs-selector-tag {
   color: #8ddb8c;
 }
