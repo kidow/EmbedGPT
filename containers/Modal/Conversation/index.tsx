@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import type { FC } from 'react'
 import { Modal } from 'containers'
 import classnames from 'classnames'
-import { Icon } from 'components'
+import { Avatar, Icon } from 'components'
 
 type Conversation = Database['public']['Tables']['conversations']['Row']
 export interface Props extends Conversation, Omit<ModalProps, 'title'> {}
@@ -43,7 +43,7 @@ const ConversationModal: FC<Props> = ({
                 })}
               >
                 {item.from === 'human' ? (
-                  <img src={avatar_url} alt="User" />
+                  <Avatar url={avatar_url} />
                 ) : (
                   <Icon.ChatGPT />
                 )}

@@ -1,4 +1,4 @@
-import { Icon, SEO, Tooltip } from 'components'
+import { Avatar, Icon, SEO, Tooltip } from 'components'
 import type {
   GetStaticPaths,
   GetStaticProps,
@@ -55,7 +55,7 @@ const ConversationIdPage: NextPage<
                   })}
                 >
                   {item.from === 'human' ? (
-                    <img src={avatar_url} alt="User" />
+                    <Avatar url={avatar_url} />
                   ) : (
                     <Icon.ChatGPT />
                   )}

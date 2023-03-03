@@ -1,5 +1,5 @@
 import { ShareIcon } from '@heroicons/react/20/solid'
-import { Icon } from 'components'
+import { Avatar, Icon } from 'components'
 import { Modal } from 'containers'
 import { useMemo } from 'react'
 import type { FC } from 'react'
@@ -35,11 +35,7 @@ const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
         </button>
 
         <div className="flex gap-6 bg-primary p-6">
-          <img
-            src={avatar_url || ''}
-            alt="User"
-            className="h-[30px] w-[30px]"
-          />
+          <Avatar url={avatar_url} />
           <div className="whitespace-pre-wrap text-text">{props.title}</div>
         </div>
         <div className="flex gap-6 bg-secondary p-6">

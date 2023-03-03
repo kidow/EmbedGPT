@@ -14,7 +14,7 @@ let isRequesting = false
   )[0]
 
   const image = document.querySelectorAll('img')[1]
-  const avatarUrl = new URL(image.src).searchParams.get('url')
+  const avatarUrl = new URL(image.src).searchParams.get('url') || ''
   const items = []
 
   for (const node of container.children) {
@@ -24,13 +24,16 @@ let isRequesting = false
       const warning = node.querySelector('.text-orange-500')
       items.push({
         from: 'human',
-        value: warning ? warning.innerText.split('\n')[0] : node.textContent
+        value: warning
+          ? warning.innerText.split('\n')[0]
+          : node.children[0].children[1].innerText
       })
     } else if (markdown) {
-      markdown.classList.remove('dark:prose-invert')
-      markdown.classList.remove('dark')
+      markdown.classList.remove('dark:prose-invert', 'dark')
       markdown.classList.add('prose-invert')
       items.push({ from: 'gpt', value: markdown.outerHTML })
+      markdown.classList.add('dark:prose-invert', 'dark')
+      markdown.classList.remove('prose-invert')
     }
   }
 
