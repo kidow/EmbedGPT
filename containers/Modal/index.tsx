@@ -3,6 +3,8 @@ import type { FC } from 'react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import classnames from 'classnames'
 import { createPortal } from 'react-dom'
+import ConversationModal from './Conversation'
+import ShareModal from './Share'
 
 interface Props extends ModalProps, ReactProps {}
 
@@ -58,22 +60,26 @@ const Modal: FC<Props> = ({
             maxWidth
           )}
         >
-          <header className="border-t-4 border-brand bg-white dark:bg-neutral-800">
-            <div className="flex items-center border-b border-neutral-200 py-3 px-4 dark:border-neutral-700">
-              <div className="flex-1">
-                <h1 className="text-xl font-semibold">{title}</h1>
-                {!!description && (
-                  <p className="mt-1 text-sm text-neutral-400">{description}</p>
-                )}
+          {!!title && (
+            <header className="border-t-4 border-brand bg-white dark:bg-neutral-800">
+              <div className="flex items-center border-b border-neutral-200 py-3 px-4 dark:border-neutral-700">
+                <div className="flex-1">
+                  <h1 className="text-xl font-semibold">{title}</h1>
+                  {!!description && (
+                    <p className="mt-1 text-sm text-neutral-400">
+                      {description}
+                    </p>
+                  )}
+                </div>
+                <button
+                  onClick={onClose}
+                  className="rounded-full p-2 hover:bg-neutral-200 dark:hover:bg-neutral-900"
+                >
+                  <XMarkIcon className="h-5 w-5 text-neutral-800 dark:text-neutral-100" />
+                </button>
               </div>
-              <button
-                onClick={onClose}
-                className="rounded-full p-2 hover:bg-neutral-200 dark:hover:bg-neutral-900"
-              >
-                <XMarkIcon className="h-5 w-5 text-neutral-800 dark:text-neutral-100" />
-              </button>
-            </div>
-          </header>
+            </header>
+          )}
           <div
             className={classnames('bg-white dark:bg-neutral-800', {
               'py-6 px-7': padding,
@@ -94,4 +100,7 @@ const Modal: FC<Props> = ({
   )
 }
 
-export default Modal
+export default Object.assign(Modal, {
+  Conversation: ConversationModal,
+  Share: ShareModal
+})

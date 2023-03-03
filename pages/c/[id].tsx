@@ -6,9 +6,12 @@ import type {
   InferGetStaticPropsType
 } from 'next'
 import { useMemo } from 'react'
-import { supabase } from 'services'
+import { supabase, toast } from 'services'
 import styles from 'styles/utils.module.css'
 import * as cheerio from 'cheerio'
+import { LinkIcon } from '@heroicons/react/24/outline'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { useRouter } from 'next/router'
 
 interface Props {
   title: string
@@ -20,6 +23,7 @@ interface State {}
 const ConversationIdPage: NextPage<
   InferGetStaticPropsType<typeof getStaticProps>
 > = ({ title, avatar_url, content }) => {
+  const { query } = useRouter()
   const items: Array<{ from: 'human' | 'gpt'; value: string }> = useMemo(
     () => JSON.parse(content),
     [content]
@@ -86,9 +90,14 @@ const ConversationIdPage: NextPage<
         <div>
           <div className="flex items-center gap-4">
             <Tooltip content="Copy URL">
-              <button>
-                <Icon.Link className="h-6 w-6 fill-[#d1d5db]" />
-              </button>
+              <CopyToClipboard
+                text={`https://embedgpt.vercel.app/c/${query.id}`}
+                onCopy={() => toast.success('복사되었습니다.')}
+              >
+                <button>
+                  <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
+                </button>
+              </CopyToClipboard>
             </Tooltip>
             <Tooltip content="Iframe">
               <button>

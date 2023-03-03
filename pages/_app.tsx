@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { ErrorBoundary, Offline } from 'containers'
+import { ErrorBoundary, Offline, Toast } from 'containers'
 import { useState } from 'react'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import type { Session } from '@supabase/auth-helpers-react'
@@ -25,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps<Props>) {
         >
           <Component {...pageProps} />
         </SessionContextProvider>
+        <Toast />
       </ErrorBoundary>
     </Offline>
   )

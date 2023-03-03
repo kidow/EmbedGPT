@@ -23,8 +23,10 @@ EmbedGPT는 다음과 같은 스택으로 이루어져 있습니다.
 - [Supabase](https://supabase.com/) - Database
 - [Vercel](https://vercel.com) - Hosting
 
-## Inspired by
+## References
 
 This project was inspired by [ShareGPT](https://github.com/domeccleston/sharegpt).
 
 Thanks for revealing the source code. [domeccleston](https://github.com/domeccleston)! 👍
+
+The extension project was created through [boilerplate](https://github.com/lxieyang/chrome-extension-boilerplate-react).

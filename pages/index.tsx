@@ -5,11 +5,8 @@ import Link from 'next/link'
 import { captureException, useObjectState } from 'services'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-interface Props {
-  data: Database['public']['Tables']['conversations']['Row'][] | null
-  count: number | null
-}
 interface State {
   total: number
   page: number
@@ -25,6 +22,7 @@ const HomePage: NextPage = () => {
     isLoading: false
   })
   const supabase = useSupabaseClient<Database>()
+  const { push } = useRouter()
 
   const get = async (page: number = 1) => {
     if (isLoading) return
@@ -61,16 +59,20 @@ const HomePage: NextPage = () => {
             <p>트위터, 레딧 등의 커뮤니티에 손쉽게 임베드하세요.</p>
           </div>
           <div className="flex justify-center">
-            <button className="flex items-center justify-center gap-3 rounded bg-stone-700 py-3 px-5 hover:bg-stone-700/90">
+            <Link
+              href="https://chrome.google.com/webstore/detail/embedgpt-chatgpt/nbjoccgcnhjmhpholoagaodhgiehbloa"
+              target="_blank"
+              className="flex items-center justify-center gap-3 rounded bg-stone-700 py-3 px-5 hover:bg-stone-700/90"
+            >
               <img src="/chrome.svg" alt="Chrome" className="h-5 w-5" />
               <span className="font-semibold text-white">
                 Install Extension
               </span>
-            </button>
+            </Link>
           </div>
         </div>
         <div className="mx-auto mt-16 max-w-screen-md">
-          <ul className="space-y-5">
+          <ul className="space-y-10">
             {list.map((item, key) => (
               <Card key={key} {...item} />
             ))}

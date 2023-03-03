@@ -29,6 +29,14 @@ interface ModalProps {
   footer?: ReactNode
 }
 
+namespace NToast {
+  type Type = 'success' | 'info' | 'warn' | 'error'
+  interface Emit {
+    message: string
+    type: NToast.Type
+  }
+}
+
 interface Database {
   public: {
     Tables: {

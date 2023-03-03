@@ -34,7 +34,7 @@ let isRequesting = false
     }
   }
 
-  const res = await fetch('http://localhost:3000/api/conversations', {
+  const res = await fetch('https://embedgpt.vercel.app/api/conversations', {
     body: JSON.stringify({ avatarUrl, items }),
     headers: new Headers({ 'Content-Type': 'application/json' }),
     method: 'POST'
@@ -42,7 +42,7 @@ let isRequesting = false
     alert(`Error saving conversation: ${err.message}`)
   })
   const { id, success } = await res.json()
-  if (success) window.open(`http://localhost:3000/c/${id}`, '_blank')
+  if (success) window.open(`https://embedgpt.vercel.app/c/${id}`, '_blank')
 
   setTimeout(() => {
     isRequesting = false
