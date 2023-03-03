@@ -16,7 +16,8 @@ const Modal: FC<Props> = ({
   title,
   description,
   padding = true,
-  footer
+  footer,
+  outer
 }) => {
   const onEscape = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -94,6 +95,7 @@ const Modal: FC<Props> = ({
             </footer>
           )}
         </div>
+        {outer}
       </div>
     </div>,
     document.body

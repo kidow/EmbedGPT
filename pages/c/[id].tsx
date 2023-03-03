@@ -12,7 +12,7 @@ import { LinkIcon } from '@heroicons/react/24/outline'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
-import { EnvelopeIcon } from '@heroicons/react/20/solid'
+import { EnvelopeIcon } from '@heroicons/react/24/solid'
 
 interface Props {
   title: string
@@ -128,7 +128,6 @@ const ConversationIdPage: NextPage<
           </div>
         </div>
       </div>
-      <div className="prose prose-invert" />
       <div className="fixed top-16 left-[calc((100vw-768px)/2+768px)] hidden lg:block">
         <ul className="share-floating">
           <li>
@@ -158,32 +157,43 @@ const ConversationIdPage: NextPage<
             </Tooltip>
           </li>
           <li>
-            <button>
-              <Icon.Twitter className="fill-neutral-300" />
-            </button>
+            <Tooltip position="left" content="Twitter">
+              <button>
+                <Icon.Twitter className="fill-neutral-300" />
+              </button>
+            </Tooltip>
           </li>
           <li>
-            <button>
-              <Icon.Facebook className="fill-neutral-300" />
-            </button>
+            <Tooltip position="left" content="Facebook">
+              <button>
+                <Icon.Facebook className="fill-neutral-300" />
+              </button>
+            </Tooltip>
           </li>
           <li>
-            <button>
-              <Icon.KakaoTalk className="fill-neutral-300" />
-            </button>
+            <Tooltip position="left" content="카카오톡">
+              <button>
+                <Icon.KakaoTalk className="fill-neutral-300" />
+              </button>
+            </Tooltip>
           </li>
           <li>
-            <button>
-              <Icon.Reddit className="fill-neutral-300" />
-            </button>
+            <Tooltip position="left" content="Reddit">
+              <button>
+                <Icon.Reddit className="fill-neutral-300" />
+              </button>
+            </Tooltip>
           </li>
           <li>
-            <button>
-              <Icon.LinkedIn className="fill-neutral-300" />
-            </button>
+            <Tooltip position="left" content="LinkedIn">
+              <button>
+                <Icon.LinkedIn className="fill-neutral-300" />
+              </button>
+            </Tooltip>
           </li>
         </ul>
       </div>
+      <div className="prose prose-invert font-sans" />
     </>
   )
 }

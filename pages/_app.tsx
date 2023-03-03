@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { ErrorBoundary, Offline, Toast } from 'containers'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import type { Session } from '@supabase/auth-helpers-react'
 import 'styles/globals.css'
@@ -16,6 +16,19 @@ export default function App({ Component, pageProps }: AppProps<Props>) {
     createBrowserSupabaseClient<Database>()
   )
 
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js'
+    script.defer = true
+    document.head.appendChild(script)
+    script.onload = () => {
+      window.Kakao?.init(process.env.NEXT_PUBLIC_KAKAO_API)
+    }
+
+    return () => {
+      script.remove()
+    }
+  }, [])
   return (
     <Offline>
       <ErrorBoundary>

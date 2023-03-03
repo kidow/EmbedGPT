@@ -18,6 +18,7 @@ const Avatar: FC<Props> = ({ url }) => {
   ) : (
     <img
       src={url}
+      draggable={false}
       className="h-[30px] w-[30px]"
       alt="User"
       onError={() => setIsError(true)}

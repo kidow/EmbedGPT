@@ -28,6 +28,13 @@ export default function Document() {
           href="favicon-16x16.png"
         />
         <meta name="msapplication-TileColor" content="#10a37f" />
+        {/* <script
+          type="text/javascript"
+          async
+          defer
+          src="https://cdn.feedbank.app/plugin.js"
+          plugin-key="252ca53b-fee5-424f-988a-73aab4204f8a"
+        ></script> */}
       </Head>
       <body>
         <Main />

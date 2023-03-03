@@ -10,15 +10,15 @@
 }
 
 .share-container {
-  @apply flex gap-3 overflow-x-scroll;
+  @apply flex gap-3;
 }
 
 .share-container button {
-  @apply flex h-15 w-15 items-center justify-center rounded-full;
+  @apply flex h-12 w-12 items-center justify-center rounded-full;
 }
 
 .share-container button svg {
-  @apply h-10 w-10;
+  @apply h-8 w-8;
 }
 
 .share-floating {
@@ -48,6 +48,18 @@
 
 .markdown pre > div > div:nth-of-type(1) {
   @apply bg-primary;
+}
+
+.markdown th {
+  @apply border-y border-l bg-[rgba(236,236,241,.2)] px-3 py-1 first:rounded-tl-md last:rounded-tr-md last:border-r;
+}
+
+.markdown td {
+  @apply border-l border-b py-1 px-3 last:border-r;
+}
+
+.markdown tbody tr:last-child td {
+  @apply first:rounded-bl-md last:rounded-br-md;
 }
 
 .hljs {

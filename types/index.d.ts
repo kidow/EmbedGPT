@@ -27,6 +27,7 @@ interface ModalProps {
   description?: ReactNode
   padding?: boolean
   footer?: ReactNode
+  outer?: ReactNode
 }
 
 namespace NToast {

@@ -2,7 +2,12 @@ import { useMemo } from 'react'
 import type { FC } from 'react'
 import { Modal } from 'containers'
 import classnames from 'classnames'
-import { Avatar, Icon } from 'components'
+import { Avatar, Icon, Tooltip } from 'components'
+import CopyToClipboard from 'react-copy-to-clipboard'
+import { share, toast } from 'services'
+import { LinkIcon } from '@heroicons/react/24/outline'
+import { EnvelopeIcon } from '@heroicons/react/24/solid'
+import { XMarkIcon } from '@heroicons/react/20/solid'
 
 type Conversation = Database['public']['Tables']['conversations']['Row']
 export interface Props extends Conversation, Omit<ModalProps, 'title'> {}
@@ -20,12 +25,80 @@ const ConversationModal: FC<Props> = ({
     () => JSON.parse(content),
     [content]
   )
+
   return (
     <Modal
       maxWidth="max-w-4xl"
       isOpen={isOpen}
       onClose={onClose}
       padding={false}
+      outer={
+        <div className="fixed top-8 left-[calc((100vw-896px)/2+912px)] hidden lg:block">
+          <ul className="share-floating">
+            <li>
+              <Tooltip position="left" content="Copy URL">
+                <CopyToClipboard
+                  text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${id}`}
+                  onCopy={() => toast.success('복사되었습니다.')}
+                >
+                  <button>
+                    <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
+                  </button>
+                </CopyToClipboard>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="퍼가기">
+                <button>
+                  <Icon.Embed className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="이메일">
+                <button>
+                  <EnvelopeIcon className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="Twitter">
+                <button onClick={() => share.twitter(id)}>
+                  <Icon.Twitter className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="Facebook">
+                <button onClick={() => share.facebook(id)}>
+                  <Icon.Facebook className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="카카오톡">
+                <button onClick={() => share.kakaotalk(id)}>
+                  <Icon.KakaoTalk className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="Reddit">
+                <button onClick={() => share.reddit(id)}>
+                  <Icon.Reddit className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="LinkedIn">
+                <button onClick={() => share.linkedin(id)}>
+                  <Icon.LinkedIn className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+          </ul>
+        </div>
+      }
     >
       {items.map((item, key) => (
         <div
@@ -33,6 +106,7 @@ const ConversationModal: FC<Props> = ({
             'w-full border-b border-gray-900/50 text-gray-100',
             item.from === 'human' ? 'bg-primary' : 'bg-secondary'
           )}
+          key={key}
         >
           <div className="m-auto flex gap-4 p-4 md:max-w-2xl md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl">
             <div className="relative flex w-[30px] flex-col items-end">
@@ -64,6 +138,60 @@ const ConversationModal: FC<Props> = ({
           </div>
         </div>
       ))}
+      <div className="flex items-center justify-center bg-primary py-10 lg:hidden">
+        <div>
+          <div className="flex items-center gap-4">
+            <Tooltip content="Copy URL">
+              <CopyToClipboard
+                text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${id}`}
+                onCopy={() => toast.success('복사되었습니다.')}
+              >
+                <button>
+                  <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
+                </button>
+              </CopyToClipboard>
+            </Tooltip>
+            <Tooltip content="퍼가기">
+              <button>
+                <Icon.Embed className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="Email">
+              <button>
+                <EnvelopeIcon className="h-6 w-6 text-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="Twitter">
+              <button onClick={() => share.twitter(id)}>
+                <Icon.Twitter className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="Facebook">
+              <button onClick={() => share.facebook(id)}>
+                <Icon.Facebook className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="카카오톡">
+              <button onClick={() => share.kakaotalk(id)}>
+                <Icon.KakaoTalk className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="Reddit">
+              <button onClick={() => share.reddit(id)}>
+                <Icon.Reddit className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+            <Tooltip content="LinkedIn">
+              <button onClick={() => share.linkedin(id)}>
+                <Icon.LinkedIn className="h-6 w-6 fill-[#d1d5db]" />
+              </button>
+            </Tooltip>
+          </div>
+        </div>
+      </div>
+      <button onClick={onClose} className="fixed top-5 right-5">
+        <XMarkIcon className="h-5 w-5" />
+      </button>
     </Modal>
   )
 }

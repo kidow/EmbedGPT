@@ -4,6 +4,7 @@ import { Modal } from 'containers'
 import { useMemo } from 'react'
 import type { FC } from 'react'
 import { useObjectState } from 'services'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 type Data = Database['public']['Tables']['conversations']['Row']
 export interface Props extends Data {}
@@ -53,9 +54,9 @@ const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
             setState({ isDetailOpen: true })
             window.history.pushState(window.history.state, '', `/c/${id}`)
           }}
-          className="absolute left-1/2 bottom-0 h-10 -translate-x-1/2 translate-y-1/2 select-none rounded-md border bg-secondary py-2 px-4 text-sm"
+          className="absolute left-1/2 bottom-0 h-10 -translate-x-1/2 translate-y-1/2 rounded-full border bg-secondary p-2 text-neutral-200 hover:text-neutral-50"
         >
-          보기
+          <ChevronDownIcon className="h-5 w-5" />
         </button>
       </li>
       {isShareOpen && (

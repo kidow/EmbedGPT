@@ -52,10 +52,12 @@ class ErrorBoundary extends PureComponent<Props, State> {
           <div>
             <div className="text-7xl">500 Server Error</div>
             <div className="mt-4 text-xl text-neutral-600">
-              Sorry. An error occured.
+              죄송합니다. 에러가 발생했습니다.
+              {/* Sorry. An error occured. */}
             </div>
             <div className="mt-2 text-neutral-600">
-              If the problem persists, please report it.
+              문제가 지속되면 문의 부탁드립니다.
+              {/* If the problem persists, please report it. */}
             </div>
           </div>
         </div>
