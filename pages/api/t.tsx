@@ -55,7 +55,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             </div>
           </div>
         </div>
-        <div tw="absolute right-1 bottom-0 text-2xl text-neutral-200 font-semibold">
+        <div
+          tw="absolute left-1/2 top-1/2 text-2xl text-neutral-200 font-semibold"
+          style={{ transform: 'translate(-50%, -50%)' }}
+        >
           EmbedGPT
         </div>
       </div>

@@ -44,7 +44,7 @@ const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
           </button>
         </div>
         <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
-          <span className="truncate p-2">{`https://embedgpt.vercel.app/c/${id}`}</span>
+          <span className="p-2">{`https://embedgpt.vercel.app/c/${id}`}</span>
           <CopyToClipboard
             text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${id}`}
             onCopy={() => toast.success('복사되었습니다.')}

@@ -33,7 +33,7 @@ const ConversationModal: FC<Props> = ({
       onClose={onClose}
       padding={false}
       outer={
-        <div className="fixed top-8 left-[calc((100vw-896px)/2+912px)] hidden lg:block">
+        <div className="fixed top-1/2 left-[calc((100vw-896px)/2+912px)] hidden -translate-y-1/2 lg:block">
           <ul className="share-floating">
             <li>
               <Tooltip position="left" content="Copy URL">
