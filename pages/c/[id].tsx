@@ -45,6 +45,7 @@ const ConversationIdPage: NextPage<
     window.addEventListener(
       'message',
       function (e) {
+        console.dir(e)
         window.parent.postMessage(
           { height: document.documentElement.scrollHeight, embedgpt: 'true' },
           '*'
