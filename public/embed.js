@@ -39,12 +39,6 @@ iframe.onload = function () {
 container.appendChild(iframe)
 
 block.insertAdjacentElement('afterend', container)
-if (
-  iframe.contentDocument &&
-  iframe.contentDocument.readyState === 'complete'
-) {
-  iframe.onload()
-}
 block.remove()
 
 // if (block && block.id) {

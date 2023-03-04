@@ -8,7 +8,7 @@ import type {
 import { useMemo } from 'react'
 import { supabase, toast } from 'services'
 import * as cheerio from 'cheerio'
-import { LinkIcon } from '@heroicons/react/24/outline'
+import { HomeIcon, LinkIcon } from '@heroicons/react/24/outline'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
@@ -89,6 +89,15 @@ const ConversationIdPage: NextPage<
         <div className="flex items-center justify-center bg-primary py-10 lg:hidden">
           <div>
             <div className="flex items-center gap-4">
+              <Tooltip content="홈">
+                <button
+                  onClick={() =>
+                    window.open('https://embedgpt.vercel.app', '_blank')
+                  }
+                >
+                  <HomeIcon className="h-6 w-6 text-[#d1d5db]" />
+                </button>
+              </Tooltip>
               <Tooltip content="Copy URL">
                 <CopyToClipboard
                   text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
