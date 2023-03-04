@@ -16,11 +16,11 @@ iframe.setAttribute('frameborder', '0')
 iframe.setAttribute('title', 'EmbedGPT')
 iframe.src = 'https://embedgpt.vercel.app/c/' + block.id
 iframe.onload = function () {
-  iframe.contentWindow.postMessage({ embedgpt: 'true' }, '*')
+  iframe.contentWindow.postMessage(
+    { embedgpt: 'true' },
+    'https://embedgpt.vercel.app'
+  )
 }
-iframe.addEventListener('load', function () {
-  iframe.contentWindow.postMessage({ embedgpt: 'true' }, '*')
-})
 container.appendChild(iframe)
 
 block.insertAdjacentElement('afterend', container)

@@ -46,7 +46,7 @@ const ConversationIdPage: NextPage<
       if (e.data.embedgpt === 'true') {
         window.parent.postMessage(
           { height: document.documentElement.scrollHeight, embedgpt: 'true' },
-          '*'
+          e.origin
         )
       }
     })
