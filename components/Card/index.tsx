@@ -54,7 +54,7 @@ const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
             setState({ isDetailOpen: true })
             window.history.pushState(window.history.state, '', `/c/${id}`)
           }}
-          className="absolute left-1/2 bottom-0 h-10 -translate-x-1/2 translate-y-1/2 rounded-full border bg-secondary p-2 text-neutral-200 hover:text-neutral-50"
+          className="absolute left-1/2 bottom-0 h-10 w-10 -translate-x-1/2 translate-y-1/2 rounded-full border bg-secondary p-2 text-neutral-200 hover:text-neutral-50"
         >
           <ChevronDownIcon className="h-5 w-5" />
         </button>

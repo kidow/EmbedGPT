@@ -44,9 +44,20 @@ const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
           </button>
         </div>
         <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
-          <span className="p-2">{`https://embedgpt.vercel.app/c/${id}`}</span>
+          <span className="flex-1 truncate p-2">{`https://embedgpt.vercel.app/c/${id}`}</span>
           <CopyToClipboard
             text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${id}`}
+            onCopy={() => toast.success('복사되었습니다.')}
+          >
+            <button className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand">
+              복사
+            </button>
+          </CopyToClipboard>
+        </div>
+        <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
+          <span className="flex-1 truncate p-2">{`<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`}</span>
+          <CopyToClipboard
+            text={`<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`}
             onCopy={() => toast.success('복사되었습니다.')}
           >
             <button className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand">

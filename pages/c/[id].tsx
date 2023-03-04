@@ -136,71 +136,71 @@ const ConversationIdPage: NextPage<
               </Tooltip>
             </div>
           </div>
-          <div className="fixed top-16 left-[calc((100vw-768px)/2+768px)] hidden lg:block">
-            <ul className="share-floating">
-              <li>
-                <Tooltip position="left" content="Copy URL">
-                  <CopyToClipboard
-                    text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
-                    onCopy={() => toast.success('복사되었습니다.')}
-                  >
-                    <button>
-                      <LinkIcon className="text-neutral-300" />
-                    </button>
-                  </CopyToClipboard>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip position="left" content="퍼가기">
+        </div>
+        <div className="fixed top-16 left-[calc((100vw-768px)/2+768px)] hidden lg:block">
+          <ul className="share-floating">
+            <li>
+              <Tooltip position="left" content="Copy URL">
+                <CopyToClipboard
+                  text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
+                  onCopy={() => toast.success('복사되었습니다.')}
+                >
                   <button>
-                    <Icon.Embed className="fill-neutral-300" />
+                    <LinkIcon className="text-neutral-300" />
                   </button>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip position="left" content="이메일">
-                  <button>
-                    <EnvelopeIcon className="fill-neutral-300" />
-                  </button>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip position="left" content="Twitter">
-                  <button>
-                    <Icon.Twitter className="fill-neutral-300" />
-                  </button>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip position="left" content="Facebook">
-                  <button>
-                    <Icon.Facebook className="fill-neutral-300" />
-                  </button>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip position="left" content="카카오톡">
-                  <button>
-                    <Icon.KakaoTalk className="fill-neutral-300" />
-                  </button>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip position="left" content="Reddit">
-                  <button>
-                    <Icon.Reddit className="fill-neutral-300" />
-                  </button>
-                </Tooltip>
-              </li>
-              <li>
-                <Tooltip position="left" content="LinkedIn">
-                  <button>
-                    <Icon.LinkedIn className="fill-neutral-300" />
-                  </button>
-                </Tooltip>
-              </li>
-            </ul>
-          </div>
+                </CopyToClipboard>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="퍼가기">
+                <button>
+                  <Icon.Embed className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="이메일">
+                <button>
+                  <EnvelopeIcon className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="Twitter">
+                <button>
+                  <Icon.Twitter className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="Facebook">
+                <button>
+                  <Icon.Facebook className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="카카오톡">
+                <button>
+                  <Icon.KakaoTalk className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="Reddit">
+                <button>
+                  <Icon.Reddit className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+            <li>
+              <Tooltip position="left" content="LinkedIn">
+                <button>
+                  <Icon.LinkedIn className="fill-neutral-300" />
+                </button>
+              </Tooltip>
+            </li>
+          </ul>
         </div>
       </div>
       <span className="prose prose-invert ml-auto hidden h-4 w-4 overflow-y-auto !whitespace-pre font-sans text-xs">
