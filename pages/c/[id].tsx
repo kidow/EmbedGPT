@@ -5,7 +5,7 @@ import type {
   NextPage,
   InferGetStaticPropsType
 } from 'next'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { share, supabase, toast, useObjectState } from 'services'
 import * as cheerio from 'cheerio'
 import { HomeIcon, LinkIcon } from '@heroicons/react/24/outline'
@@ -41,6 +41,18 @@ const ConversationIdPage: NextPage<
       cheerio.load(items[1].value, null, false)('*').find('*').first().text(),
     [items]
   )
+
+  useEffect(() => {
+    window.addEventListener('message', function (e) {
+      console.log('e.data', e.data)
+      if (e.data.embedgpt === 'true') {
+        window.parent.postMessage(
+          { height: document.documentElement.scrollHeight, embedgpt: 'true' },
+          '*'
+        )
+      }
+    })
+  }, [])
   return (
     <>
       <SEO
