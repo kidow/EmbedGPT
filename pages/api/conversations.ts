@@ -13,7 +13,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     const { data, error } = await supabase
       .from('conversations')
-      .select('*')
+      .select('content, avatar_url')
       .order('created_at', { ascending: false })
     if (error) return res.status(400).json(error)
     return res.status(200).json({ success: true, data })
