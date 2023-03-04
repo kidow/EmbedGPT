@@ -6,24 +6,30 @@ import type {
   InferGetStaticPropsType
 } from 'next'
 import { useMemo } from 'react'
-import { supabase, toast } from 'services'
+import { share, supabase, toast, useObjectState } from 'services'
 import * as cheerio from 'cheerio'
 import { HomeIcon, LinkIcon } from '@heroicons/react/24/outline'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
 import { EnvelopeIcon } from '@heroicons/react/24/solid'
+import { Modal } from 'containers'
 
 interface Props {
   title: string
   avatar_url: string
   content: string
 }
-interface State {}
+interface State {
+  isShareOpen: boolean
+}
 
 const ConversationIdPage: NextPage<
   InferGetStaticPropsType<typeof getStaticProps>
 > = ({ title, avatar_url, content }) => {
+  const [{ isShareOpen }, setState] = useObjectState<State>({
+    isShareOpen: false
+  })
   const { query } = useRouter()
   const items: Array<{ from: 'human' | 'gpt'; value: string }> = useMemo(
     () => JSON.parse(content),
@@ -38,11 +44,12 @@ const ConversationIdPage: NextPage<
   return (
     <>
       <SEO
-        title={title.split('\n')[0]}
+        title={title}
         description={description}
-        image={`${process.env.NEXT_PUBLIC_BASE_URL}/api/t?t=${
-          title.split('\n')[0]
-        }&d=${description}&a=${avatar_url}`}
+        image={`${process.env.NEXT_PUBLIC_BASE_URL}/api/t?t=${title.replaceAll(
+          ' ',
+          '_'
+        )}&d=${description.replaceAll(' ', '_')}&a=${avatar_url}`}
       />
       <div className="flex min-h-screen flex-col items-center bg-primary">
         {items.map((item, key) => (
@@ -109,37 +116,44 @@ const ConversationIdPage: NextPage<
                 </CopyToClipboard>
               </Tooltip>
               <Tooltip content="퍼가기">
-                <button>
+                <button onClick={() => setState({ isShareOpen: true })}>
                   <Icon.Embed className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
               </Tooltip>
               <Tooltip content="Email">
-                <button>
+                <button
+                  onClick={() =>
+                    window.open(
+                      `mailto:?body=https://embedgpt.vercel.app/c/${query.id}`,
+                      '_blank'
+                    )
+                  }
+                >
                   <EnvelopeIcon className="h-6 w-6 text-[#d1d5db]" />
                 </button>
               </Tooltip>
               <Tooltip content="Twitter">
-                <button>
+                <button onClick={() => share.twitter(query.id as string)}>
                   <Icon.Twitter className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
               </Tooltip>
               <Tooltip content="Facebook">
-                <button>
+                <button onClick={() => share.facebook(query.id as string)}>
                   <Icon.Facebook className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
               </Tooltip>
               <Tooltip content="Reddit">
-                <button>
+                <button onClick={() => share.reddit(query.id as string)}>
                   <Icon.Reddit className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
               </Tooltip>
               <Tooltip content="LinkedIn">
-                <button>
+                <button onClick={() => share.linkedin(query.id as string)}>
                   <Icon.LinkedIn className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
               </Tooltip>
               <Tooltip content="카카오톡">
-                <button>
+                <button onClick={() => share.kakaotalk(query.id as string)}>
                   <Icon.KakaoTalk className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
               </Tooltip>
@@ -162,49 +176,56 @@ const ConversationIdPage: NextPage<
             </li>
             <li>
               <Tooltip position="left" content="퍼가기">
-                <button>
+                <button onClick={() => setState({ isShareOpen: true })}>
                   <Icon.Embed className="fill-neutral-300" />
                 </button>
               </Tooltip>
             </li>
             <li>
               <Tooltip position="left" content="이메일">
-                <button>
+                <button
+                  onClick={() =>
+                    window.open(
+                      `mailto:?body=https://embedgpt.vercel.app/c/${query.id}`,
+                      '_blank'
+                    )
+                  }
+                >
                   <EnvelopeIcon className="fill-neutral-300" />
                 </button>
               </Tooltip>
             </li>
             <li>
               <Tooltip position="left" content="Twitter">
-                <button>
+                <button onClick={() => share.twitter(query.id as string)}>
                   <Icon.Twitter className="fill-neutral-300" />
                 </button>
               </Tooltip>
             </li>
             <li>
               <Tooltip position="left" content="Facebook">
-                <button>
+                <button onClick={() => share.facebook(query.id as string)}>
                   <Icon.Facebook className="fill-neutral-300" />
                 </button>
               </Tooltip>
             </li>
             <li>
               <Tooltip position="left" content="카카오톡">
-                <button>
+                <button onClick={() => share.kakaotalk(query.id as string)}>
                   <Icon.KakaoTalk className="fill-neutral-300" />
                 </button>
               </Tooltip>
             </li>
             <li>
               <Tooltip position="left" content="Reddit">
-                <button>
+                <button onClick={() => share.reddit(query.id as string)}>
                   <Icon.Reddit className="fill-neutral-300" />
                 </button>
               </Tooltip>
             </li>
             <li>
               <Tooltip position="left" content="LinkedIn">
-                <button>
+                <button onClick={() => share.linkedin(query.id as string)}>
                   <Icon.LinkedIn className="fill-neutral-300" />
                 </button>
               </Tooltip>
@@ -215,6 +236,15 @@ const ConversationIdPage: NextPage<
       <span className="prose prose-invert ml-auto hidden h-4 w-4 overflow-y-auto !whitespace-pre font-sans text-xs">
         <span className="w-full" />
       </span>
+      {isShareOpen && (
+        <Modal.Share
+          isOpen={isShareOpen}
+          onClose={() => setState({ isShareOpen: false })}
+          id={query.id as string}
+          title={title}
+          avatarUrl={avatar_url}
+        />
+      )}
     </>
   )
 }

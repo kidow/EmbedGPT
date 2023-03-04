@@ -7,8 +7,12 @@ export const config = {
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { searchParams } = new URL(req.url)
-  const t = searchParams.get('t') || 'ChatGPT 내용을 공유하고 싶어!'
-  const d = searchParams.get('d') || 'EmbedGPT에 오신 것을 환영합니다. 🤖'
+  const t =
+    searchParams.get('t')?.replaceAll('_', ' ') ||
+    'ChatGPT 내용을 공유하고 싶어!'
+  const d =
+    searchParams.get('d')?.replaceAll('_', ' ') ||
+    'EmbedGPT에 오신 것을 환영합니다. 🤖'
   const a =
     searchParams.get('a') ||
     'https://lh3.googleusercontent.com/a/AGNmyxbijcusbnXngBQDX7RX_oPax5cXS_cZ0eKsEdT1=s96-c'
@@ -56,7 +60,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
           </div>
         </div>
         <div
-          tw="absolute left-1/2 top-1/2 text-2xl text-neutral-200 font-semibold"
+          tw="absolute left-1/2 top-1/2 text-3xl text-neutral-200 font-semibold"
           style={{ transform: 'translate(-50%, -50%)' }}
         >
           EmbedGPT

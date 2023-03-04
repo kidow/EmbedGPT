@@ -21,10 +21,15 @@ const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
       </div>
       <div className="space-y-6 overflow-x-hidden py-6 px-7">
         <div className="share-container">
-          <button className="bg-neutral-50">
-            <Icon.Embed className="fill-black" />
-          </button>
-          <button className="bg-neutral-600">
+          <button
+            onClick={() =>
+              window.open(
+                `mailto:?body=https://embedgpt.vercel.app/c/${id}`,
+                '_blank'
+              )
+            }
+            className="bg-neutral-600"
+          >
             <EnvelopeIcon className="text-white" />
           </button>
           <button onClick={() => share.twitter(id)} className="bg-[#1da1f2]">
