@@ -69,7 +69,7 @@ const HomePage: NextPage = () => {
             </Link>
             <Tooltip content="Coming soon!">
               <button className="flex items-center justify-center rounded-full bg-stone-700 p-5 hover:bg-stone-700/90">
-                <img src="/whale.svg" alt="Whale" className="h-5 w-5" />
+                <img src="/Whale.svg" alt="Whale" className="h-5 w-5" />
               </button>
             </Tooltip>
           </div>
