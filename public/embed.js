@@ -1,3 +1,4 @@
+console.log(1)
 const block = document.querySelector('blockquote.embedgpt')
 
 const container = document.createElement('div')
