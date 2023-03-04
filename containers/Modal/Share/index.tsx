@@ -2,8 +2,7 @@ import type { FC } from 'react'
 import { Modal } from 'containers'
 import { Avatar, Icon } from 'components'
 import { EnvelopeIcon } from '@heroicons/react/20/solid'
-import { share, toast } from 'services'
-import CopyToClipboard from 'react-copy-to-clipboard'
+import { share } from 'services'
 
 export interface Props extends ModalProps {
   id: string
@@ -21,15 +20,7 @@ const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
       </div>
       <div className="space-y-6 overflow-x-hidden py-6 px-7">
         <div className="share-container">
-          <button
-            onClick={() =>
-              window.open(
-                `mailto:?body=https://embedgpt.vercel.app/c/${id}`,
-                '_blank'
-              )
-            }
-            className="bg-neutral-600"
-          >
+          <button onClick={() => share.email(id)} className="bg-neutral-600">
             <EnvelopeIcon className="text-white" />
           </button>
           <button onClick={() => share.twitter(id)} className="bg-[#1da1f2]">
@@ -50,25 +41,21 @@ const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
         </div>
         <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
           <span className="flex-1 truncate p-2">{`https://embedgpt.vercel.app/c/${id}`}</span>
-          <CopyToClipboard
-            text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${id}`}
-            onCopy={() => toast.success('복사되었습니다.')}
+          <button
+            onClick={() => share.url(id)}
+            className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand"
           >
-            <button className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand">
-              복사
-            </button>
-          </CopyToClipboard>
+            복사
+          </button>
         </div>
         <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
           <span className="flex-1 truncate p-2">{`<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`}</span>
-          <CopyToClipboard
-            text={`<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`}
-            onCopy={() => toast.success('복사되었습니다.')}
+          <button
+            onClick={() => share.embed(id)}
+            className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand"
           >
-            <button className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand">
-              복사
-            </button>
-          </CopyToClipboard>
+            복사
+          </button>
         </div>
       </div>
     </Modal>

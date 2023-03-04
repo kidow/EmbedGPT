@@ -3,8 +3,7 @@ import type { FC } from 'react'
 import { Modal } from 'containers'
 import classnames from 'classnames'
 import { Avatar, Icon, Tooltip } from 'components'
-import CopyToClipboard from 'react-copy-to-clipboard'
-import { share, toast, useObjectState } from 'services'
+import { share, useObjectState } from 'services'
 import { LinkIcon } from '@heroicons/react/24/outline'
 import { EnvelopeIcon } from '@heroicons/react/24/solid'
 import { XMarkIcon } from '@heroicons/react/20/solid'
@@ -44,14 +43,9 @@ const ConversationModal: FC<Props> = ({
               <ul className="share-floating">
                 <li>
                   <Tooltip position="left" content="URL 복사">
-                    <CopyToClipboard
-                      text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${id}`}
-                      onCopy={() => toast.success('복사되었습니다.')}
-                    >
-                      <button>
-                        <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
-                      </button>
-                    </CopyToClipboard>
+                    <button onClick={() => share.url(id)}>
+                      <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
+                    </button>
                   </Tooltip>
                 </li>
                 <li>
@@ -63,14 +57,7 @@ const ConversationModal: FC<Props> = ({
                 </li>
                 <li>
                   <Tooltip position="left" content="이메일">
-                    <button
-                      onClick={() =>
-                        window.open(
-                          `mailto:?body=https://embedgpt.vercel.app/c/${id}`,
-                          '_blank'
-                        )
-                      }
-                    >
+                    <button onClick={() => share.email(id)}>
                       <EnvelopeIcon className="fill-neutral-300" />
                     </button>
                   </Tooltip>
@@ -163,14 +150,9 @@ const ConversationModal: FC<Props> = ({
           <div>
             <div className="flex items-center gap-4">
               <Tooltip content="URL 복사">
-                <CopyToClipboard
-                  text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${id}`}
-                  onCopy={() => toast.success('복사되었습니다.')}
-                >
-                  <button>
-                    <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
-                  </button>
-                </CopyToClipboard>
+                <button onClick={() => share.url(id)}>
+                  <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
+                </button>
               </Tooltip>
               <Tooltip content="퍼가기">
                 <button onClick={() => setState({ isShareOpen: true })}>
@@ -178,14 +160,7 @@ const ConversationModal: FC<Props> = ({
                 </button>
               </Tooltip>
               <Tooltip content="Email">
-                <button
-                  onClick={() =>
-                    window.open(
-                      `mailto:?body=https://embedgpt.vercel.app/c/${id}`,
-                      '_blank'
-                    )
-                  }
-                >
+                <button onClick={() => share.email(id)}>
                   <EnvelopeIcon className="h-6 w-6 text-[#d1d5db]" />
                 </button>
               </Tooltip>

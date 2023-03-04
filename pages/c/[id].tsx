@@ -6,10 +6,9 @@ import type {
   InferGetStaticPropsType
 } from 'next'
 import { useEffect, useMemo } from 'react'
-import { share, supabase, toast, useObjectState } from 'services'
+import { share, supabase, useObjectState } from 'services'
 import * as cheerio from 'cheerio'
 import { HomeIcon, LinkIcon } from '@heroicons/react/24/outline'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
 import { EnvelopeIcon } from '@heroicons/react/24/solid'
@@ -43,13 +42,11 @@ const ConversationIdPage: NextPage<
   )
 
   useEffect(() => {
-    window.addEventListener('message', function (e) {
-      if (e.data.embedgpt === 'true') {
-        window.parent.postMessage(
-          { height: document.documentElement.scrollHeight, embedgpt: 'true' },
-          '*'
-        )
-      }
+    window.addEventListener('load', function (e) {
+      window.parent.postMessage(
+        { height: document.documentElement.scrollHeight, embedgpt: 'true' },
+        '*'
+      )
     })
   }, [])
   return (
@@ -117,14 +114,9 @@ const ConversationIdPage: NextPage<
                 </button>
               </Tooltip>
               <Tooltip content="URL 복사">
-                <CopyToClipboard
-                  text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
-                  onCopy={() => toast.success('복사되었습니다.')}
-                >
-                  <button>
-                    <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
-                  </button>
-                </CopyToClipboard>
+                <button onClick={() => share.url(query.id as string)}>
+                  <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
+                </button>
               </Tooltip>
               <Tooltip content="퍼가기">
                 <button onClick={() => setState({ isShareOpen: true })}>
@@ -132,14 +124,7 @@ const ConversationIdPage: NextPage<
                 </button>
               </Tooltip>
               <Tooltip content="Email">
-                <button
-                  onClick={() =>
-                    window.open(
-                      `mailto:?body=https://embedgpt.vercel.app/c/${query.id}`,
-                      '_blank'
-                    )
-                  }
-                >
+                <button onClick={() => share.email(query.id as string)}>
                   <EnvelopeIcon className="h-6 w-6 text-[#d1d5db]" />
                 </button>
               </Tooltip>
@@ -175,14 +160,9 @@ const ConversationIdPage: NextPage<
           <ul className="share-floating">
             <li>
               <Tooltip position="left" content="URL 복사">
-                <CopyToClipboard
-                  text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
-                  onCopy={() => toast.success('복사되었습니다.')}
-                >
-                  <button>
-                    <LinkIcon className="text-neutral-300" />
-                  </button>
-                </CopyToClipboard>
+                <button onClick={() => share.url(query.id as string)}>
+                  <LinkIcon className="text-neutral-300" />
+                </button>
               </Tooltip>
             </li>
             <li>
@@ -194,14 +174,7 @@ const ConversationIdPage: NextPage<
             </li>
             <li>
               <Tooltip position="left" content="이메일">
-                <button
-                  onClick={() =>
-                    window.open(
-                      `mailto:?body=https://embedgpt.vercel.app/c/${query.id}`,
-                      '_blank'
-                    )
-                  }
-                >
+                <button onClick={() => share.email(query.id as string)}>
                   <EnvelopeIcon className="fill-neutral-300" />
                 </button>
               </Tooltip>

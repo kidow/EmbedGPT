@@ -1,4 +1,5 @@
 import { EventListener } from 'services'
+import copy from 'copy-to-clipboard'
 
 class Toast {
   private emit(message: string, type: NToast.Type) {
@@ -26,6 +27,19 @@ class Share {
     window.open(url, '_blank', 'width=600,height=400')
   }
 
+  url(id: string) {
+    copy(`https://embedgpt.vercel.app/c/${id}`)
+    toast.success('복사되었습니다.')
+  }
+  embed(id: string) {
+    copy(
+      `<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`
+    )
+    toast.success('복사되었습니다.')
+  }
+  email(id: string) {
+    window.open(`mailto:?body=https://embedgpt.vercel.app/c/${id}`, '_blank')
+  }
   facebook(id: string) {
     this.share(`http://www.facebook.com/sharer.php?u=${this.baseUrl}/c/${id}`)
   }

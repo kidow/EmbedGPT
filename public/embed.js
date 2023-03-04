@@ -1,4 +1,3 @@
-console.log(1)
 const block = document.querySelector('blockquote.embedgpt')
 
 const container = document.createElement('div')
@@ -28,7 +27,7 @@ block.insertAdjacentElement('afterend', container)
 block.remove()
 
 window.addEventListener('message', function (e) {
-  if (e.data.embedgpt === 'true') {
+  if (e.data.embedgpt === 'true' && e.data.height) {
     iframe.style.height = e.data.height + 'px'
   }
 })
