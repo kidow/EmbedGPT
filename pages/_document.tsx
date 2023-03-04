@@ -28,10 +28,6 @@ export default function Document() {
           href="favicon-16x16.png"
         />
         <meta name="msapplication-TileColor" content="#10a37f" />
-        <meta
-          http-equiv="Content-Security-Policy"
-          content="default-src 'self'; img-src https://*; child-src 'none';"
-        />
         {/* <script
           type="text/javascript"
           async
