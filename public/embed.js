@@ -18,9 +18,6 @@ iframe.src = 'https://embedgpt.vercel.app/c/' + block.id
 iframe.onload = function () {
   iframe.contentWindow.postMessage({ embedgpt: 'true' }, '*')
 }
-iframe.addEventListener('load', function () {
-  iframe.contentWindow.postMessage({ embedgpt: 'true' }, '*')
-})
 container.appendChild(iframe)
 
 block.insertAdjacentElement('afterend', container)
