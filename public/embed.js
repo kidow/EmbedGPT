@@ -16,18 +16,18 @@ iframe.setAttribute('frameborder', '0')
 iframe.setAttribute('title', 'EmbedGPT')
 iframe.src = 'https://embedgpt.vercel.app/c/' + block.id
 iframe.onload = function () {
-  iframe.contentWindow.postMessage(
-    { embedgpt: 'true' },
-    'https://embedgpt.vercel.app'
-  )
+  iframe.contentWindow.postMessage({ embedgpt: 'true' }, '*')
 }
+iframe.addEventListener('load', function () {
+  iframe.contentWindow.postMessage({ embedgpt: 'true' }, '*')
+})
 container.appendChild(iframe)
 
 block.insertAdjacentElement('afterend', container)
 block.remove()
 
 window.addEventListener('message', function (e) {
-  if (e.data.embedgpt === 'true' && e.data.height) {
+  if (e.data.embedgpt === 'true') {
     iframe.style.height = e.data.height + 'px'
   }
 })
