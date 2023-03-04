@@ -42,12 +42,16 @@ const ConversationIdPage: NextPage<
   )
 
   useEffect(() => {
-    window.addEventListener('load', function (e) {
-      window.parent.postMessage(
-        { height: document.documentElement.scrollHeight, embedgpt: 'true' },
-        '*'
-      )
-    })
+    window.addEventListener(
+      'message',
+      function (e) {
+        window.parent.postMessage(
+          { height: document.documentElement.scrollHeight, embedgpt: 'true' },
+          '*'
+        )
+      },
+      false
+    )
   }, [])
   return (
     <>
