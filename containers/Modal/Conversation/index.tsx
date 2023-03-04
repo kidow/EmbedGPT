@@ -43,7 +43,7 @@ const ConversationModal: FC<Props> = ({
             <div className="fixed top-1/2 left-[calc((100vw-896px)/2+912px)] hidden -translate-y-1/2 lg:block">
               <ul className="share-floating">
                 <li>
-                  <Tooltip position="left" content="Copy URL">
+                  <Tooltip position="left" content="URL 복사">
                     <CopyToClipboard
                       text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${id}`}
                       onCopy={() => toast.success('복사되었습니다.')}
@@ -112,8 +112,11 @@ const ConversationModal: FC<Props> = ({
                 </li>
               </ul>
             </div>
-            <button onClick={onClose} className="fixed top-5 right-5">
-              <XMarkIcon className="h-5 w-5" />
+            <button
+              onClick={onClose}
+              className="fixed top-2 right-2 lg:top-5 lg:right-5"
+            >
+              <XMarkIcon className="h-5 w-5 lg:h-8 lg:w-8" />
             </button>
           </>
         }
@@ -159,7 +162,7 @@ const ConversationModal: FC<Props> = ({
         <div className="flex items-center justify-center bg-primary py-10 lg:hidden">
           <div>
             <div className="flex items-center gap-4">
-              <Tooltip content="Copy URL">
+              <Tooltip content="URL 복사">
                 <CopyToClipboard
                   text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${id}`}
                   onCopy={() => toast.success('복사되었습니다.')}

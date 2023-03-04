@@ -15,7 +15,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     'EmbedGPT에 오신 것을 환영합니다. 🤖'
   const a =
     searchParams.get('a') ||
-    'https://lh3.googleusercontent.com/a/AGNmyxbijcusbnXngBQDX7RX_oPax5cXS_cZ0eKsEdT1=s96-c'
+    'https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'
 
   return new ImageResponse(
     (

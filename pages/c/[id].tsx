@@ -105,7 +105,7 @@ const ConversationIdPage: NextPage<
                   <HomeIcon className="h-6 w-6 text-[#d1d5db]" />
                 </button>
               </Tooltip>
-              <Tooltip content="Copy URL">
+              <Tooltip content="URL 복사">
                 <CopyToClipboard
                   text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
                   onCopy={() => toast.success('복사되었습니다.')}
@@ -163,7 +163,7 @@ const ConversationIdPage: NextPage<
         <div className="fixed top-16 left-[calc((100vw-768px)/2+768px)] hidden lg:block">
           <ul className="share-floating">
             <li>
-              <Tooltip position="left" content="Copy URL">
+              <Tooltip position="left" content="URL 복사">
                 <CopyToClipboard
                   text={`${process.env.NEXT_PUBLIC_BASE_URL}/c/${query.id}`}
                   onCopy={() => toast.success('복사되었습니다.')}

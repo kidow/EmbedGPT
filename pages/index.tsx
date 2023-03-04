@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
 import { Footer, Header } from 'containers'
-import { Card, Collapse, SEO, Spinner, Tooltip } from 'components'
+import { Card, Collapse, Icon, SEO, Spinner, Tooltip } from 'components'
 import Link from 'next/link'
 import { captureException, useObjectState } from 'services'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useEffect } from 'react'
+import Script from 'next/script'
 
 interface State {
   total: number
@@ -99,7 +100,55 @@ const HomePage: NextPage = () => {
         </div>
 
         <div className="mx-auto mt-16 max-w-screen-md">
-          <h2 id="faqs" className="mb-6 text-4xl font-bold">
+          <h2 id="Guides" className="mb-6 ml-4 text-4xl font-bold lg:ml-0">
+            Guides
+          </h2>
+          <div className="steps">
+            <h3>확장 앱 설치</h3>
+            <div>
+              <p>다음 링크를 클릭하여 확장 앱을 설치해주세요.</p>
+              <p>
+                <Link
+                  href="https://chrome.google.com/webstore/detail/embedgpt-chatgpt/nbjoccgcnhjmhpholoagaodhgiehbloa"
+                  target="_blank"
+                  className="text-blue-500 hover:underline"
+                >
+                  Chrome
+                </Link>
+              </p>
+            </div>
+            <h3>아이콘 클릭</h3>
+            <div>
+              <img src="/icon_click.png" alt="" className="h-40 w-40" />
+              <p className="mt-4">ChatGPT 사이트에서 앱 아이콘을 클릭하세요.</p>
+            </div>
+            <h3>코드 복사</h3>
+            <div>
+              <p>상세 페이지에서 다음 모양의 아이콘을 클릭하세요.</p>
+              <span className="my-4 inline-block rounded-full border border-neutral-700 p-1">
+                <Icon.Embed className="h-5 w-5 fill-neutral-500" />
+              </span>
+              <p>
+                <code className="rounded-md bg-neutral-800 p-1 text-sm">{`<blockquote...`}</code>
+                로 시작하는 코드를 복사해서 HTML 편집기에 붙여넣기 하세요.
+              </p>
+              <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
+                <span className="flex-1 truncate p-2">
+                  {`<blockquote id="xxxxxxxxxx" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`}
+                </span>
+                <span className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand">
+                  복사
+                </span>
+              </div>
+            </div>
+            <h3>완료!</h3>
+            <blockquote id="0r1y3r7lbooo" className="embedgpt"></blockquote>
+            <Script async src="https://embedgpt.vercel.app/embed.js"></Script>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-16 max-w-screen-md">
+          <h2 id="faqs" className="mb-6 ml-4 text-4xl font-bold lg:ml-0">
             <Link href="#faqs">FAQs</Link>
           </h2>
           <div>
@@ -108,7 +157,7 @@ const HomePage: NextPage = () => {
                 {
                   title: 'ChatGPT 내용을 어떻게 공유할 수 있나요?',
                   content:
-                    '홈페이지 상단에 위치한 "Install Extension"을 클릭하여 크롬 확장 프로그램을 설치하 주세요. 이 후 ChatGPT에 들어가서 공유하고 싶은 대화에서 아이콘을 클릭하면 자동으로 EmbedGPT에 공유됩니다.'
+                    '홈페이지 상단에 위치한 "Install Extension"을 클릭하여 크롬 확장 프로그램을 설치해 주세요. 이 후 ChatGPT에 들어가서 공유하고 싶은 대화에서 아이콘을 클릭하면 자동으로 EmbedGPT에 공유됩니다.'
                 },
                 {
                   title: '개인정보를 가져가지는 않나요?',
