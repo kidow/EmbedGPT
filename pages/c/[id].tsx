@@ -44,7 +44,6 @@ const ConversationIdPage: NextPage<
 
   useEffect(() => {
     window.addEventListener('message', function (e) {
-      console.log('e.data', e.data)
       if (e.data.embedgpt === 'true') {
         window.parent.postMessage(
           { height: document.documentElement.scrollHeight, embedgpt: 'true' },
@@ -56,7 +55,7 @@ const ConversationIdPage: NextPage<
   return (
     <>
       <SEO
-        title={title}
+        title={title.split('\n')[0]}
         description={description}
         image={`${process.env.NEXT_PUBLIC_BASE_URL}/api/t?t=${title.replaceAll(
           ' ',
