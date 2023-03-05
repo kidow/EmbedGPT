@@ -1,0 +1,41 @@
+{
+  "landing": {
+    "description": {
+      "1": "Share ChatGPT conversations with one click.",
+      "2": "Easily embed raw content."
+    },
+    "view_more": "View more",
+    "guides": {
+      "1": {
+        "title": "Install Extension",
+        "description": "Install the extension app by clicking on the following link."
+      },
+      "2": {
+        "title": "Click app icon",
+        "description": "Click the app icon on the ChatGPT site."
+      },
+      "3": {
+        "title": "Copy code",
+        "description": "On the detail page, click the icon that looks like this:",
+        "copy": "Copy"
+      },
+      "4": {
+        "title": "Complete!"
+      }
+    },
+    "faqs": {
+      "1": {
+        "title": "How can I share ChatGPT content?",
+        "content": "Please install the Chrome extension by clicking 'Install Extension' located at the top of the homepage. After this, go into ChatGPT and click the icon in the conversation you want to share, and it will be automatically shared to EmbedGPT."
+      },
+      "2": {
+        "title": "Do you not take personal information?",
+        "content": "EmbedGPT does not require registration, and in the process of importing ChatGPT content, it does not collect any personal information other than the user avatar URL and content."
+      },
+      "3": {
+        "title": "is it free?",
+        "content": "All features are free!"
+      }
+    }
+  }
+}

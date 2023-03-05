@@ -5,13 +5,17 @@ import { useEffect, useState } from 'react'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import type { Session } from '@supabase/auth-helpers-react'
 import 'styles/globals.css'
+import { appWithTranslation } from 'next-i18next'
 
 interface Props {
   initialSession: Session
 }
 interface State {}
 
-export default function App({ Component, pageProps }: AppProps<Props>) {
+export default appWithTranslation(function App({
+  Component,
+  pageProps
+}: AppProps<Props>) {
   const [supabaseClient] = useState(() =>
     createBrowserSupabaseClient<Database>()
   )
@@ -42,4 +46,4 @@ export default function App({ Component, pageProps }: AppProps<Props>) {
       </ErrorBoundary>
     </Offline>
   )
-}
+})

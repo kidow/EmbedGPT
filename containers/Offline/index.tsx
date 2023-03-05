@@ -69,8 +69,8 @@ const Offline: FC<Props> = ({ children }) => {
             draggable={false}
           />
           <div className="mt-10 mb-5 space-y-4 text-center text-4xl">
-            <div>인터넷에 연결되어 있지 않습니다.</div>
-            <div>네트워크를 확인해주세요.</div>
+            <div>You are not connected to the internet.</div>
+            <div>Please check your network.</div>
           </div>
         </div>
       </div>

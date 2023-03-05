@@ -42,21 +42,21 @@ const ConversationModal: FC<Props> = ({
             <div className="fixed top-1/2 left-[calc((100vw-896px)/2+912px)] hidden -translate-y-1/2 lg:block">
               <ul className="share-floating">
                 <li>
-                  <Tooltip position="left" content="URL 복사">
+                  <Tooltip position="left" content="Copy URL">
                     <button onClick={() => share.url(id)}>
                       <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
                     </button>
                   </Tooltip>
                 </li>
                 <li>
-                  <Tooltip position="left" content="퍼가기">
+                  <Tooltip position="left" content="Embed">
                     <button onClick={() => setState({ isShareOpen: true })}>
                       <Icon.Embed className="fill-neutral-300" />
                     </button>
                   </Tooltip>
                 </li>
                 <li>
-                  <Tooltip position="left" content="이메일">
+                  <Tooltip position="left" content="Email">
                     <button onClick={() => share.email(id)}>
                       <EnvelopeIcon className="fill-neutral-300" />
                     </button>
@@ -149,12 +149,12 @@ const ConversationModal: FC<Props> = ({
         <div className="flex items-center justify-center bg-primary py-10 lg:hidden">
           <div>
             <div className="flex items-center gap-4">
-              <Tooltip content="URL 복사">
+              <Tooltip content="Copy URL">
                 <button onClick={() => share.url(id)}>
                   <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
                 </button>
               </Tooltip>
-              <Tooltip content="퍼가기">
+              <Tooltip content="Embed">
                 <button onClick={() => setState({ isShareOpen: true })}>
                   <Icon.Embed className="h-6 w-6 fill-[#d1d5db]" />
                 </button>

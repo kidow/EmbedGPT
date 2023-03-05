@@ -13,7 +13,7 @@ interface Props {
 
 const SEO: FC<Props> = ({
   title,
-  description = '클릭 한 번으로 ChatGPT 대화를 공유하세요.',
+  description = 'Share ChatGPT conversations with one click.',
   image = 'https://embedgpt.vercel.app/api/t',
   ldJson,
   noSEO = false,

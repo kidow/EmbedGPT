@@ -13,7 +13,12 @@ interface State {}
 
 const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="공유" padding={false}>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Share Content"
+      padding={false}
+    >
       <div className="flex gap-6 bg-primary p-6">
         <Avatar url={avatarUrl} />
         <div className="truncate text-text">{title}</div>
@@ -45,7 +50,7 @@ const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
             onClick={() => share.url(id)}
             className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand"
           >
-            복사
+            Copy
           </button>
         </div>
         <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
@@ -54,7 +59,7 @@ const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
             onClick={() => share.embed(id)}
             className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand"
           >
-            복사
+            Copy
           </button>
         </div>
       </div>

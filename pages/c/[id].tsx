@@ -106,7 +106,7 @@ const ConversationIdPage: NextPage<
         <div className="flex items-center justify-center bg-primary py-10 lg:hidden">
           <div>
             <div className="flex items-center gap-4">
-              <Tooltip content="홈">
+              <Tooltip content="Home">
                 <button
                   onClick={() =>
                     window.open('https://embedgpt.vercel.app', '_blank')
@@ -115,12 +115,12 @@ const ConversationIdPage: NextPage<
                   <HomeIcon className="h-6 w-6 text-[#d1d5db]" />
                 </button>
               </Tooltip>
-              <Tooltip content="URL 복사">
+              <Tooltip content="Copy URL">
                 <button onClick={() => share.url(query.id as string)}>
                   <LinkIcon className="h-6 w-6 text-[#d1d5db]" />
                 </button>
               </Tooltip>
-              <Tooltip content="퍼가기">
+              <Tooltip content="Embed">
                 <button onClick={() => setState({ isShareOpen: true })}>
                   <Icon.Embed className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
@@ -140,6 +140,11 @@ const ConversationIdPage: NextPage<
                   <Icon.Facebook className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
               </Tooltip>
+              <Tooltip content="카카오톡">
+                <button onClick={() => share.kakaotalk(query.id as string)}>
+                  <Icon.KakaoTalk className="h-6 w-6 fill-[#d1d5db]" />
+                </button>
+              </Tooltip>
               <Tooltip content="Reddit">
                 <button onClick={() => share.reddit(query.id as string)}>
                   <Icon.Reddit className="h-6 w-6 fill-[#d1d5db]" />
@@ -150,32 +155,27 @@ const ConversationIdPage: NextPage<
                   <Icon.LinkedIn className="h-6 w-6 fill-[#d1d5db]" />
                 </button>
               </Tooltip>
-              <Tooltip content="카카오톡">
-                <button onClick={() => share.kakaotalk(query.id as string)}>
-                  <Icon.KakaoTalk className="h-6 w-6 fill-[#d1d5db]" />
-                </button>
-              </Tooltip>
             </div>
           </div>
         </div>
         <div className="fixed top-16 left-[calc((100vw-768px)/2+768px)] hidden lg:block">
           <ul className="share-floating">
             <li>
-              <Tooltip position="left" content="URL 복사">
+              <Tooltip position="left" content="Copy URL">
                 <button onClick={() => share.url(query.id as string)}>
                   <LinkIcon className="text-neutral-300" />
                 </button>
               </Tooltip>
             </li>
             <li>
-              <Tooltip position="left" content="퍼가기">
+              <Tooltip position="left" content="Embed">
                 <button onClick={() => setState({ isShareOpen: true })}>
                   <Icon.Embed className="fill-neutral-300" />
                 </button>
               </Tooltip>
             </li>
             <li>
-              <Tooltip position="left" content="이메일">
+              <Tooltip position="left" content="Email">
                 <button onClick={() => share.email(query.id as string)}>
                   <EnvelopeIcon className="fill-neutral-300" />
                 </button>
