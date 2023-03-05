@@ -29,7 +29,7 @@ const ConversationIdPage: NextPage<
   const [{ isShareOpen }, setState] = useObjectState<State>({
     isShareOpen: false
   })
-  const { query } = useRouter()
+  const { query, locale } = useRouter()
   const items: Array<{ from: 'human' | 'gpt'; value: string }> = useMemo(
     () => JSON.parse(content),
     [content]
@@ -59,7 +59,7 @@ const ConversationIdPage: NextPage<
         image={`${process.env.NEXT_PUBLIC_BASE_URL}/api/t?t=${title.replaceAll(
           ' ',
           '_'
-        )}&d=${description.replaceAll(' ', '_')}&a=${avatar_url}`}
+        )}&d=${description.replaceAll(' ', '_')}&a=${avatar_url}&l=${locale}`}
       />
       <div className="flex min-h-screen flex-col items-center bg-primary">
         {items.map((item, key) => (

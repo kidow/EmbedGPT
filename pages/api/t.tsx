@@ -7,12 +7,17 @@ export const config = {
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { searchParams } = new URL(req.url)
+  const l = searchParams.get('l') || 'en'
   const t =
     searchParams.get('t')?.replaceAll('_', ' ') ||
-    'ChatGPT 내용을 공유하고 싶어!'
+    (l === 'ko'
+      ? 'ChatGPT 내용을 공유하고 싶어!'
+      : 'I want to share ChatGPT content!')
   const d =
     searchParams.get('d')?.replaceAll('_', ' ') ||
-    'EmbedGPT에 오신 것을 환영합니다. 🤖'
+    (l === 'ko'
+      ? 'EmbedGPT에 오신 것을 환영합니다. 🤖'
+      : 'Welcome to EmbedGPT 🤖')
   const a =
     searchParams.get('a') ||
     'https://ssl.gstatic.com/ui/v1/icons/mail/profile_mask2.png'

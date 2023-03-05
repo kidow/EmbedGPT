@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import Script from 'next/script'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
 
 interface State {
   total: number
@@ -25,6 +26,7 @@ const HomePage: NextPage = () => {
   })
   const supabase = useSupabaseClient<Database>()
   const { t, i18n } = useTranslation('common')
+  const { locale } = useRouter()
 
   const get = async (page: number = 1) => {
     if (isLoading) return
@@ -132,16 +134,16 @@ const HomePage: NextPage = () => {
                 <Icon.Embed className="h-5 w-5 fill-neutral-500" />
               </span>
               <p>
-                {i18n.language === 'en' ? (
+                {i18n.language === 'ko' ? (
+                  <>
+                    <code className="rounded-md bg-neutral-800 p-1 text-sm">{`<blockquote...`}</code>
+                    로 시작하는 코드를 복사해서 HTML 편집기에 붙여넣기 하세요.
+                  </>
+                ) : (
                   <>
                     Copy the code starting with{' '}
                     <code className="rounded-md bg-neutral-800 p-1 text-sm">{`<blockquote...`}</code>{' '}
                     and paste it into your HTML editor.
-                  </>
-                ) : (
-                  <>
-                    <code className="rounded-md bg-neutral-800 p-1 text-sm">{`<blockquote...`}</code>
-                    로 시작하는 코드를 복사해서 HTML 편집기에 붙여넣기 하세요.
                   </>
                 )}
               </p>
@@ -155,7 +157,11 @@ const HomePage: NextPage = () => {
               </div>
             </div>
             <h3>{t('landing.guides.4.title')}</h3>
-            <blockquote id="0r1y3r7lbooo" className="embedgpt"></blockquote>
+            {locale === 'ko' ? (
+              <blockquote id="yr8sk3pxn1" className="embedgpt"></blockquote>
+            ) : (
+              <blockquote id="yuofrqqeqt" className="embedgpt"></blockquote>
+            )}
             <Script async src="https://embedgpt.vercel.app/embed.js"></Script>
           </div>
         </div>

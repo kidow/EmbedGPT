@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "EmbedGPT - ChatGPT 내용을 공유하고 붙여넣기",
-  "version": "1.1.1",
-  "description": "클릭 한 번으로 공유하고 커뮤니티에 손쉽게 붙여넣기하세요.",
+  "name": "__MSG_name__",
+  "version": "1.2.0",
+  "description": "__MSG_description__",
   "background": {
     "service_worker": "background.bundle.js"
   },
@@ -24,5 +24,6 @@
       "js": ["contentScript.bundle.js"],
       "run_at": "document_end"
     }
-  ]
+  ],
+  "default_locale": "ko"
 }

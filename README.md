@@ -4,9 +4,16 @@
 
 ## Introduction
 
+EmbedGPT helps you share ChatGPT content with one click, and easily embed shared content to communities such as Twitter and Reddit.
+
 EmbedGPT는 클릭 한 번으로 ChatGPT 내용을 공유하고, 공유된 내용을 트위터, 레딧 등의 커뮤니티에 손쉽게 퍼갈 수 있도록 도와줍니다.
 
 ## Features
+
+- Capture ChatGPT contents with one click of chrome extension icon
+- Contents of captured users can be explored on the homepage
+- Provide iframe embed code of ChatGPT content on homepage
+- Share to communities such as Twitter and Reddit
 
 - 크롬 익스텐션 아이콘 클릭 한 번으로 ChatGPT 내용을 캡쳐
 - 캡쳐된 유저들의 내용들을 홈페이지에서 탐색 가능
@@ -15,7 +22,7 @@ EmbedGPT는 클릭 한 번으로 ChatGPT 내용을 공유하고, 공유된 내�
 
 ## Stacks
 
-EmbedGPT는 다음과 같은 스택으로 이루어져 있습니다.
+EmbedGPT is built with the following stack:
 
 - [Next.js](https://nextjs.org/) - Framework
 - [Typescript](https://www.typescriptlang.org/) - Langauge

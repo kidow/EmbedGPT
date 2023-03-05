@@ -15,11 +15,11 @@ const Header: FC<Props> = () => {
         <button
           onClick={() =>
             push({ pathname, query }, asPath, {
-              locale: i18n.language === 'en' ? 'ko' : 'en'
+              locale: i18n.language === 'ko' ? 'en' : 'ko'
             }).then(reload)
           }
         >
-          {locale === 'en' ? 'English' : '한국어'}
+          {locale === 'ko' ? '한국어' : 'English'}
         </button>
       </div>
     </header>

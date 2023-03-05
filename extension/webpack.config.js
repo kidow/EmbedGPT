@@ -158,6 +158,11 @@ const options = {
           from: 'src/assets/32x32.png',
           to: path.join(__dirname, 'build'),
           force: true
+        },
+        {
+          from: 'src/_locales',
+          to: path.join(__dirname, 'build', '_locales'),
+          force: true
         }
       ]
     })
