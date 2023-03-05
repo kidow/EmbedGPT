@@ -3,8 +3,8 @@
 
   if (!document.querySelector('.markdown')) return
 
-  const isStreaming = document.getElementsByClassName('.result-streaming')
-  if (isStreaming.length > 0) return
+  const isStreaming = document.querySelector('.result-streaming')
+  if (isStreaming) return
 
   const isLoading = document.getElementById('embedgpt-spinner')
   if (isLoading) return

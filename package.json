@@ -1,6 +1,6 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
+  "name": "embedgpt",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -38,5 +38,8 @@
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0"
-  }
+  },
+  "author": "kidow <wcgo2ling@gmail.com>",
+  "description": "Share ChatGPT conversations with one click and embed raw content.",
+  "repository": "https://github.com/kidow/embedgpt.git"
 }

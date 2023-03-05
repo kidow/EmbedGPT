@@ -1,6 +1,6 @@
 {
   "name": "embedgpt-extension",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "EmbedGPT lets you embed ChatGPT content on Twitter, Reddit, etc.",
   "license": "MIT",
   "repository": {
