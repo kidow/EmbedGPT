@@ -158,7 +158,7 @@ const HomePage: NextPage = () => {
             </div>
             <h3>{t('landing.guides.4.title')}</h3>
             {locale === 'ko' ? (
-              <blockquote id="yr8sk3pxn1" className="embedgpt"></blockquote>
+              <blockquote id="3on6v2yu2n5" className="embedgpt"></blockquote>
             ) : (
               <blockquote id="yuofrqqeqt" className="embedgpt"></blockquote>
             )}
