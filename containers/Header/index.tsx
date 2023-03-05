@@ -7,7 +7,7 @@ interface State {}
 
 const Header: FC<Props> = () => {
   const { i18n } = useTranslation('common')
-  const { push, reload, asPath, pathname, query } = useRouter()
+  const { push, reload, asPath, pathname, query, locale } = useRouter()
   return (
     <header className="container mx-auto px-2 sm:px-0">
       <div className="flex h-16 items-center justify-between">
@@ -19,7 +19,7 @@ const Header: FC<Props> = () => {
             }).then(reload)
           }
         >
-          {i18n.language === 'en' ? 'English' : '한국어'}
+          {locale === 'en' ? 'English' : '한국어'}
         </button>
       </div>
     </header>
