@@ -17,7 +17,7 @@
   )[0]
 
   const image = document.querySelectorAll('img')[1]
-  const avatarUrl = new URL(image.src).searchParams.get('url') || ''
+  const avatarUrl = new URL(image.src).searchParams.get('url') || null
   const items = []
 
   for (const node of container.children) {

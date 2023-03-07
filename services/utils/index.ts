@@ -29,13 +29,13 @@ class Share {
 
   url(id: string) {
     copy(`https://embedgpt.vercel.app/c/${id}`)
-    toast.success('복사되었습니다.')
+    toast.success('Successfully copied.')
   }
   embed(id: string) {
     copy(
       `<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`
     )
-    toast.success('복사되었습니다.')
+    toast.success('Successfully copied.')
   }
   email(id: string) {
     window.open(`mailto:?body=https://embedgpt.vercel.app/c/${id}`, '_blank')

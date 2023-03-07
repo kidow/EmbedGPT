@@ -114,7 +114,7 @@ const HomePage: NextPage = () => {
               <p>{t('landing.guides.1.description')}</p>
               <p>
                 <Link
-                  href="https://chrome.google.com/webstore/detail/embedgpt-chatgpt/nbjoccgcnhjmhpholoagaodhgiehbloa"
+                  href="https://shortest.link/jRTU"
                   target="_blank"
                   className="text-blue-500 hover:underline"
                 >
