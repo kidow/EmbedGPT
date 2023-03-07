@@ -80,8 +80,8 @@ const HomePage: NextPage = () => {
             </Tooltip>
           </div>
         </div>
-        <div className="mx-auto mt-16 max-w-screen-md">
-          <ul className="space-y-10">
+        <div className="mx-auto mt-16 max-w-screen-md 2xl:max-w-screen-2xl">
+          <ul className="space-y-10 2xl:columns-2 2xl:gap-5 2xl:[&>*]:mb-2 2xl:[&>*]:w-full">
             {list.map((item, key) => (
               <Card key={key} {...item} />
             ))}
