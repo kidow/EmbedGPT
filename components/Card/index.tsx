@@ -35,7 +35,7 @@ const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
           <ShareIcon className="h-5 w-5" />
         </button>
 
-        <div className="flex gap-6 bg-primary p-6">
+        <div className="relative flex max-h-32 gap-6 overflow-hidden bg-primary p-6 before:absolute before:bottom-0 before:left-0 before:z-10 before:h-4 before:w-full before:bg-primary before:blur before:content-['']">
           <Avatar url={avatar_url} />
           <div className="whitespace-pre-wrap text-text">{props.title}</div>
         </div>

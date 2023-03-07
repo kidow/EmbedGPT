@@ -2,6 +2,9 @@
 
 # EmbedGPT
 
+[Chrome Extension](https://chrome.google.com/webstore/detail/embedgpt-chatgpt/nbjoccgcnhjmhpholoagaodhgiehbloa?hl=ko&authuser=0)
+[Whale Extension](https://store.whale.naver.com/detail/pjcdoihlabgnkoiecjodfkjdaekdimlj)
+
 ## Introduction
 
 EmbedGPT helps you share ChatGPT content with one click, and easily embed shared content to communities such as Twitter and Reddit.
