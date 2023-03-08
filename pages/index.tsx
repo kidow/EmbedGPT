@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { Footer, Header } from 'containers'
-import { Card, Collapse, Icon, SEO, Spinner, Tooltip } from 'components'
+import { Card, Collapse, Icon, SEO, Spinner } from 'components'
 import Link from 'next/link'
 import { captureException, useObjectState } from 'services'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
@@ -73,11 +73,13 @@ const HomePage: NextPage = () => {
                 Install Extension
               </span>
             </Link>
-            <Tooltip content="Coming soon!">
-              <button className="flex items-center justify-center rounded-full bg-stone-700 p-5 hover:bg-stone-700/90">
-                <img src="/Whale.svg" alt="Whale" className="h-5 w-5" />
-              </button>
-            </Tooltip>
+            <Link
+              href="https://store.whale.naver.com/detail/pjcdoihlabgnkoiecjodfkjdaekdimlj"
+              target="_blank"
+              className="flex items-center justify-center rounded-full bg-stone-700 p-5 hover:bg-stone-700/90"
+            >
+              <img src="/Whale.svg" alt="Whale" className="h-5 w-5" />
+            </Link>
           </div>
         </div>
         <div className="mx-auto mt-16 max-w-screen-md 2xl:max-w-screen-2xl">
