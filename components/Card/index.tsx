@@ -37,7 +37,9 @@ const Card: FC<Props> = ({ content, avatar_url, id, ...props }) => {
 
         <div className="relative flex max-h-32 gap-6 overflow-hidden bg-primary p-6 before:absolute before:bottom-0 before:left-0 before:z-10 before:h-4 before:w-full before:bg-primary before:blur before:content-['']">
           <Avatar url={avatar_url} />
-          <div className="whitespace-pre-wrap text-text">{props.title}</div>
+          <div className="flex-1 whitespace-pre-wrap text-text">
+            {props.title}
+          </div>
         </div>
         <div className="flex gap-6 bg-secondary p-6">
           <div className="flex h-[30px] w-[30px] items-center justify-center rounded-sm bg-brand p-1 text-white">
