@@ -35,11 +35,20 @@ const ConversationIdPage: NextPage<
     [content]
   )
 
-  const description: string = useMemo(
-    () =>
-      cheerio.load(items[1].value, null, false)('*').find('*').first().text(),
-    [items]
-  )
+  const t: string = useMemo(() => title.split('\n')[0], [title])
+
+  const d: string = useMemo(() => {
+    const value = cheerio
+      .load(
+        items[1].value,
+        null,
+        false
+      )('*')
+      .find('*')
+      .first()
+      .text()
+    return value.length > 210 ? `${value.slice(0, 210)}...` : value
+  }, [items])
 
   useEffect(() => {
     window.addEventListener('message', function (e) {
@@ -54,12 +63,9 @@ const ConversationIdPage: NextPage<
   return (
     <>
       <SEO
-        title={title.split('\n')[0]}
-        description={description}
-        image={`${process.env.NEXT_PUBLIC_BASE_URL}/api/t?t=${title.replaceAll(
-          ' ',
-          '_'
-        )}&d=${description.replaceAll(' ', '_')}&a=${avatar_url}&l=${locale}`}
+        title={t}
+        description={d}
+        image={`${process.env.NEXT_PUBLIC_BASE_URL}/api/t?t=${t}&d=${d}&a=${avatar_url}&l=${locale}`}
       />
       <div className="flex min-h-screen flex-col items-center bg-primary">
         {items.map((item, key) => (

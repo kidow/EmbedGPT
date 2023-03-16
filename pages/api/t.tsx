@@ -9,12 +9,12 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { searchParams } = new URL(req.url)
   const l = searchParams.get('l') || 'en'
   const t =
-    searchParams.get('t')?.replaceAll('_', ' ') ||
+    searchParams.get('t') ||
     (l === 'ko'
       ? 'ChatGPT 내용을 공유하고 싶어!'
       : 'I want to share ChatGPT content!')
   const d =
-    searchParams.get('d')?.replaceAll('_', ' ') ||
+    searchParams.get('d') ||
     (l === 'ko'
       ? 'EmbedGPT에 오신 것을 환영합니다. 🤖'
       : 'Welcome to EmbedGPT 🤖')
