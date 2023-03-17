@@ -18,6 +18,23 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     if (error) return res.status(400).json(error)
     return res.status(200).json({ success: true, data })
   } else if (req.method === 'POST') {
+    const { data: existed } = await supabase
+      .from('conversations')
+      .select('id')
+      .match({
+        title: req.body.items[0]?.value,
+        avatar_url: req.body.avatarUrl
+      })
+      .single()
+    if (existed && !!req.body.avatarUrl) {
+      const { error } = await supabase
+        .from('conversations')
+        .update({ content: JSON.stringify(req.body.items) })
+        .eq('id', existed.id)
+      if (error) return res.status(400).json(error)
+      else return res.status(200).json({ success: true, id: existed.id })
+    }
+
     const { data, error } = await supabase
       .from('conversations')
       .insert({
