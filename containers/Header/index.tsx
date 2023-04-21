@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 
 export interface Props {}
 interface State {}
@@ -19,7 +19,7 @@ const Header: FC<Props> = () => {
             }).then(reload)
           }
         >
-          {locale === 'ko' ? '한국어' : 'English'}
+          {locale === 'ko' ? 'Korean' : 'English'}
         </button>
       </div>
     </header>
