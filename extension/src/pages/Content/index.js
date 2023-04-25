@@ -1,5 +1,5 @@
 ;(async function () {
-  if (!window.location.href.startsWith('https://chat.openai.com/chat')) return
+  if (!window.location.href.startsWith('https://chat.openai.com/c')) return
 
   if (!document.querySelector('.markdown')) return
 
