@@ -22,30 +22,30 @@ class Toast {
 export const toast = new Toast()
 
 class Share {
-  private baseUrl = 'https://embedgpt.vercel.app'
+  private baseUrl = 'https://embedgpt.kidow.me'
   private share(url: string) {
     window.open(url, '_blank', 'width=600,height=400')
   }
 
   url(id: string) {
-    copy(`https://embedgpt.vercel.app/c/${id}`)
+    copy(`https://embedgpt.kidow.me/c/${id}`)
     toast.success('Successfully copied.')
   }
   embed(id: string) {
     copy(
-      `<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`
+      `<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.kidow.me/embed.js"></script>`
     )
     toast.success('Successfully copied.')
   }
   email(id: string) {
-    window.open(`mailto:?body=https://embedgpt.vercel.app/c/${id}`, '_blank')
+    window.open(`mailto:?body=https://embedgpt.kidow.me/c/${id}`, '_blank')
   }
   facebook(id: string) {
     this.share(`http://www.facebook.com/sharer.php?u=${this.baseUrl}/c/${id}`)
   }
   twitter(id: string) {
     this.share(
-      `https://twitter.com/intent/tweet?url=https://embebgpt.vercel.app/c/${id}`
+      `https://twitter.com/intent/tweet?url=https://embebgpt.kidow.me/c/${id}`
     )
   }
   linkedin(id: string) {

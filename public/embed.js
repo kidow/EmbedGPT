@@ -14,11 +14,11 @@ iframe.setAttribute('allowtransparency', 'true')
 iframe.setAttribute('allowfullscreen', 'true')
 iframe.setAttribute('frameborder', '0')
 iframe.setAttribute('title', 'EmbedGPT')
-iframe.src = 'https://embedgpt.vercel.app/c/' + block.id
+iframe.src = 'https://embedgpt.kidow.me/c/' + block.id
 iframe.onload = function () {
   iframe.contentWindow.postMessage(
     { embedgpt: 'true' },
-    'https://embedgpt.vercel.app'
+    'https://embedgpt.kidow.me'
   )
 }
 container.appendChild(iframe)

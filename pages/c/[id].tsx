@@ -115,7 +115,7 @@ const ConversationIdPage: NextPage<
               <Tooltip content="Home">
                 <button
                   onClick={() =>
-                    window.open('https://embedgpt.vercel.app', '_blank')
+                    window.open('https://embedgpt.kidow.me', '_blank')
                   }
                 >
                   <HomeIcon className="h-6 w-6 text-[#d1d5db]" />

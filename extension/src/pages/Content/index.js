@@ -40,7 +40,7 @@
     }
   }
 
-  const res = await fetch('https://embedgpt.vercel.app/api/conversations', {
+  const res = await fetch('https://embedgpt.kidow.me/api/conversations', {
     body: JSON.stringify({ avatarUrl, items }),
     headers: new Headers({ 'Content-Type': 'application/json' }),
     method: 'POST'
@@ -48,7 +48,7 @@
     alert(`Error saving conversation: ${err.message}`)
   })
   const { id, success } = await res.json()
-  if (success) window.open(`https://embedgpt.vercel.app/c/${id}`, '_blank')
+  if (success) window.open(`https://embedgpt.kidow.me/c/${id}`, '_blank')
 
   setTimeout(() => {
     spinner.remove()

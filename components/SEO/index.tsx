@@ -14,14 +14,14 @@ interface Props {
 const SEO: FC<Props> = ({
   title,
   description = 'Share ChatGPT conversations with one click.',
-  image = 'https://embedgpt.vercel.app/api/t',
+  image = 'https://embedgpt.kidow.me/api/t',
   ldJson,
   noSEO = false,
   keywords = 'chatgpt, embed'
 }) => {
   const { asPath } = useRouter()
   const TITLE = title ? `${title} - EmbedGPT` : 'EmbedGPT'
-  const URL = 'https://embedgpt.vercel.app' + decodeURI(asPath)
+  const URL = 'https://embedgpt.kidow.me' + decodeURI(asPath)
   if (ldJson) ldJson['@context'] = 'https://schema.org'
   if (noSEO)
     return (

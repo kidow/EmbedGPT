@@ -9,11 +9,11 @@ export default function Document() {
         <meta name="robots" content="index, follow" />
         <meta
           name="google-site-verification"
-          content="6fUNDBpgXlqEpQW5ffFHpzqsiQefGySn2i0AJ6UMliw"
+          content="dpMF3-oHfMYFVkjgJpIJSGM_W_aL_gSFFnmWHM90NHU"
         />
         <meta
           name="naver-site-verification"
-          content="70d49ffb3dc232a681418ea72bb5fd8c9f0751a8"
+          content="9b9e67ae109e00ecd7953b8863fa25289fcd0ccd"
         />
         <link
           rel="icon"

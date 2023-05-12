@@ -153,7 +153,7 @@ const HomePage: NextPage = () => {
               </p>
               <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
                 <span className="flex-1 truncate p-2">
-                  {`<blockquote id="xxxxxxxxxx" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`}
+                  {`<blockquote id="xxxxxxxxxx" class="embedgpt"></blockquote><script async src="https://embedgpt.kidow.me/embed.js"></script>`}
                 </span>
                 <span className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand">
                   {t('landing.guides.3.copy')}
@@ -166,7 +166,7 @@ const HomePage: NextPage = () => {
             ) : (
               <blockquote id="yuofrqqeqt" className="embedgpt"></blockquote>
             )}
-            <Script async src="https://embedgpt.vercel.app/embed.js"></Script>
+            <Script async src="https://embedgpt.kidow.me/embed.js"></Script>
           </div>
         </div>
 

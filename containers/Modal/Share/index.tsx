@@ -45,7 +45,7 @@ const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
           </button>
         </div>
         <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
-          <span className="flex-1 truncate p-2">{`https://embedgpt.vercel.app/c/${id}`}</span>
+          <span className="flex-1 truncate p-2">{`https://embedgpt.kidow.me/c/${id}`}</span>
           <button
             onClick={() => share.url(id)}
             className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand"
@@ -54,7 +54,7 @@ const ShareModal: FC<Props> = ({ isOpen, onClose, id, title, avatarUrl }) => {
           </button>
         </div>
         <div className="flex items-center justify-between rounded-xl border border-neutral-600 bg-black p-2">
-          <span className="flex-1 truncate p-2">{`<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.vercel.app/embed.js"></script>`}</span>
+          <span className="flex-1 truncate p-2">{`<blockquote id="${id}" class="embedgpt"></blockquote><script async src="https://embedgpt.kidow.me/embed.js"></script>`}</span>
           <button
             onClick={() => share.embed(id)}
             className="flex h-9 w-16 items-center justify-center rounded-xl bg-brand"
